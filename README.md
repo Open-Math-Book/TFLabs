@@ -1,4 +1,4 @@
 TFLabs
 ======
 
-Technological Fluency Laboratories for Math/Science Undergraduates
+Technological Fluency Laboratories for Math/Science Undergraduates.
