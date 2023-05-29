@@ -21,6 +21,8 @@
 \usepackage[english]{babel} %language selection
 \selectlanguage{english}
 
+\usepackage[Bjornstrup]{fncychap}
+
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage{rotating}
@@ -50,7 +52,7 @@
 \frontmatter
 
 \title{Tech Fluency Labs for Math and Science Students, Version 0.1}
-\author={Aaron Clark, Joe Fields, Younhee Lee and Ray Mugno}
+\author={Len Brin, Joe Fields, Younhee Lee and Ray Mugno}
 \date{Southern Connecticut State University}
 
 \maketitle
@@ -62,7 +64,7 @@
 \vfill
 
 \begin{quote}
-    Copyright \copyright{}  2023  Aaron Clark, Joe Fields, Younhee Lee and Ray Mugno.
+    Copyright \copyright{}  2023  Len Brin, Joe Fields, Younhee Lee and Ray Mugno.
     Permission is granted to copy, distribute and/or modify this document
     under the terms of the GNU Free Documentation License, Version 1.3
     or any later version published by the Free Software Foundation;
@@ -100,11 +102,12 @@
 
 \mainmatter
 
-%\include{write/write}
+\include{intro/intro}
+\include{write/write}
 \include{spread/spread}
-%\include{geom/geom}
+\include{geom/geom}
 %\include{stats/stats}
-%\include{cas/cas}
+\include{cas/cas}
 
 \addcontentsline{toc}{chapter}{References}
 \phantomsection
