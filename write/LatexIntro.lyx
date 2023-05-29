@@ -1,0 +1,1595 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Introduction to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Contributed by Len Brin, March 2022
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+The Web and Markup
+\end_layout
+
+\begin_layout Standard
+Have you ever seen a web URL like 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.agnesscott.edu/lriddle/women/love.htm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+and wondered what the 
+\family typewriter
+https
+\family default
+ or the 
+\family typewriter
+htm
+\family default
+ meant? In both 
+\family typewriter
+https
+\family default
+ and 
+\family typewriter
+htm
+\family default
+, the 
+\family typewriter
+ht
+\family default
+ is short for hypertext.
+ The 
+\family typewriter
+tp
+\family default
+ in 
+\family typewriter
+https
+\family default
+ is short for transfer protocol and the 
+\family typewriter
+s
+\family default
+ is for secure.
+ The 
+\family typewriter
+m
+\family default
+ in 
+\family typewriter
+htm
+\family default
+ is for markup.
+ All webpages, when it comes down to it, are made of HTML (hypertext markup
+ language) code.
+ The HTML tells the browser what should be displayed and, in general terms,
+ the desired layout.
+ The browser takes care of the fine details depending on the type of device,
+ size of the screen, or personal preferences set by the user.
+\end_layout
+
+\begin_layout Standard
+Markup in HTML is like a note to the browser telling the browser how to
+ display the content.
+ The markup won't be displayed, but it will modify how the content is displayed.
+ Take this screenshot from 
+\family typewriter
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.southernct.edu/"
+
+\end_inset
+
+
+\family default
+ for instance.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename SCSUscreenshot.png
+	lyxscale 45
+	width 4in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Simplified just a bit, the HTML code that produces the 
+\begin_inset Quotes eld
+\end_inset
+
+Back to Campus
+\begin_inset Quotes erd
+\end_inset
+
+ announcement above looks like this:
+\end_layout
+
+\begin_layout Verbatim
+
+<img src="/sites/default/files/back-to-campus-banner.jpg" /><p style
+\end_layout
+
+\begin_layout Verbatim
+
+="font-size: 18px;">As the university prepares for the start of the
+\end_layout
+
+\begin_layout Verbatim
+
+fall 2021 semester, we remain #SouthernStrong, with <a href="https://
+\end_layout
+
+\begin_layout Verbatim
+
+inside.southernct.edu/reopening#services">all of the following academic
+\end_layout
+
+\begin_layout Verbatim
+
+offerings and campus services</a> in place for our students in a safe,
+\end_layout
+
+\begin_layout Verbatim
+
+engaging campus environment.
+ Our goal is to get you off to a great
+\end_layout
+
+\begin_layout Verbatim
+
+start, whether you're returning to campus or joining our community for
+\end_layout
+
+\begin_layout Verbatim
+
+the first time!</p>
+\end_layout
+
+\begin_layout Standard
+It is just simple text! No bells, no whistles.
+ Parts enclosed by 
+\family typewriter
+<
+\family default
+ and 
+\family typewriter
+>
+\family default
+ are the markup.
+ These parts will not be displayed themselves but rather describe how something
+ is to be displayed and leaves the rest up to the browser.
+ For example,
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+<img src="/sites/default/files/back-to-campus-banner.jpg" />
+\end_layout
+
+\begin_layout Standard
+\noindent
+tells the browswer to insert an image (
+\family typewriter
+img
+\family default
+) and tells the browser where to get the image (
+\family typewriter
+src
+\family default
+).
+ This part of the code creates
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename back-to-campus-banner.jpg
+	lyxscale 45
+	width 4in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The rest of the code creates the paragraph underneath this image.
+ It starts with 
+\family typewriter
+<p style="font-size: 18px;">
+\family default
+—which tells the browser to start a paragraph (
+\family typewriter
+p
+\family default
+) using an 18 pixel font—and ends with 
+\family typewriter
+</p>
+\family default
+, which tells the browser this is the end of the paragraph.
+ In the middle of the paragraph is what makes webpages webpages—a hyperlink.
+ The text between 
+\family typewriter
+<a href="https://inside.southernct.edu/reopening#services">
+\family default
+ and 
+\family typewriter
+</a>
+\family default
+ is marked up as a link to 
+\family typewriter
+https://inside.southernct.edu/reopening#services
+\family default
+.
+ The browser knows to display it in blue so the reader can see that these
+ words form a link.
+ Clicking it will bring up a new webpage in the browser.
+\end_layout
+
+\begin_layout Subsection*
+Write Your Own Markup
+\end_layout
+
+\begin_layout Standard
+To see markup in action, point your browser to 
+\family typewriter
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://htmledit.squarefree.com/"
+
+\end_inset
+
+
+\family default
+, where you can write some hypertext markup and see how it looks on your
+ browser.
+ The blue box at the top holds the markup, and it can be edited by you!
+ The box below shows how the browser renders the markup.
+ Do the following exercises on the 
+\family typewriter
+squarefree
+\family default
+ webpage and answer the questions.
+\end_layout
+
+\begin_layout Enumerate
+Insert 
+\family typewriter
+<em>
+\family default
+ before the word magically and insert 
+\family typewriter
+</em>
+\family default
+ after the word magically.
+ What did this accomplish? Note: 
+\family typewriter
+em
+\family default
+ is short for 
+\shape italic
+em
+\shape default
+phasis!
+\end_layout
+
+\begin_layout Enumerate
+Copy and paste the following code into the webpage.
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+<p>A list of some common HTML markup
+\end_layout
+
+\begin_layout LyX-Code
+<ol>
+\end_layout
+
+\begin_layout LyX-Code
+ <li><tt>p</tt> is short for <b>p</b>aragraph</li>
+\end_layout
+
+\begin_layout LyX-Code
+ <li><tt>a</tt> is short for <b>a</b>nchor (which can
+\end_layout
+
+\begin_layout LyX-Code
+indicate a link or a place to link to)</li>
+\end_layout
+
+\begin_layout LyX-Code
+ <li><tt>ol</tt> is short for <b>o</b>rdered <b>l</b>ist</li>
+\end_layout
+
+\begin_layout LyX-Code
+ <li><tt>li</tt> is short for <b>l</b>ist <b>i</b>tem</li>
+\end_layout
+
+\begin_layout LyX-Code
+</ol>
+\end_layout
+
+\begin_layout LyX-Code
+Notice that markup can be nested--the b and /b tags above are
+\end_layout
+
+\begin_layout LyX-Code
+inside the li and /li tags, which are between the ol and /ol
+\end_layout
+
+\begin_layout LyX-Code
+tags.</p>
+\end_layout
+
+\begin_layout Enumerate
+What happens to text between the 
+\family typewriter
+<b>
+\family default
+ and 
+\family typewriter
+</b>
+\family default
+ tags?
+\end_layout
+
+\begin_layout Enumerate
+What happens to text between the 
+\family typewriter
+<tt>
+\family default
+ and 
+\family typewriter
+</tt>
+\family default
+ tags?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Now change the 
+\family typewriter
+<ol>
+\family default
+ and 
+\family typewriter
+</ol>
+\family default
+ tags to 
+\family typewriter
+<ul>
+\family default
+ and 
+\family typewriter
+</ul>
+\family default
+ tags.
+ What happens to the displayed page (in the white box)? Note: 
+\family typewriter
+ul
+\family default
+ is short for 
+\series bold
+u
+\series default
+nordered 
+\series bold
+l
+\series default
+ist.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ (pronounced lah-tek or lay-tek)
+\end_layout
+
+\begin_layout Standard
+Markup is used to tell a renderer how you want something to look, but in
+ a general way that frees you to work on content, not layout.
+ Markup is a very powerful way to make documents that are
+\end_layout
+
+\begin_layout Itemize
+readable by humans (and therefore editable by humans) and
+\end_layout
+
+\begin_layout Itemize
+portable (transferable between devices)
+\end_layout
+
+\begin_layout Itemize
+with a consistent layout (the author does not worry about the fine details
+ of the layout)
+\end_layout
+
+\begin_layout Standard
+As we have seen, HTML (the markup language of webpages) is used to control
+ how a webpage appears.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ plays the same role for printed documents like books, reports, letters,
+ or labs (like this one!).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ is a markup language that excels at creating technical documents, especially
+ those that include mathematical formulas.
+ You might want to read 
+\begin_inset CommandInset href
+LatexCommand href
+name "this blog"
+target "https://medium.com/swlh/the-students-guide-to-latex-markup-what-it-is-and-why-you-want-it-651e723ce0c8"
+literal "false"
+
+\end_inset
+
+ all about why you want 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Like HTML, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ uses tags to mark(up) how text should look, to insert graphics, to create
+ lists, and so on.
+ Markup in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ begins with a 
+\backslash
+ (a backslash) as in 
+\family typewriter
+
+\backslash
+pi
+\family default
+, which would be used to render our friend, 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+ Every 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ document begins with the 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+ tag, which specifies what type of document is to be created (book, article,
+ report, etc.).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This is similar to HTML documents, which all begin with the 
+\family typewriter
+<html>
+\family default
+ tag and end with the 
+\family typewriter
+</html>
+\family default
+ tag.
+\end_layout
+
+\end_inset
+
+ After the documentclass tag a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ document must include the tags 
+\family typewriter
+
+\backslash
+begin{document}
+\family default
+ and 
+\family typewriter
+
+\backslash
+end{document}
+\family default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This is similar to HTML documents, in which the beginning of the content
+ is marked by 
+\family typewriter
+<body>
+\family default
+ and the end by 
+\family typewriter
+</body>
+\family default
+.
+\end_layout
+
+\end_inset
+
+ As you can probably guess, these tags mark the beginning and end of the
+ content of the document.
+ One of the simplest 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ documents possible is this one:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+documentclass{article}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{document}
+\end_layout
+
+\begin_layout LyX-Code
+Hello World!
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{document}
+\end_layout
+
+\begin_layout Standard
+Just like HTML code, it isn't pretty! However, it tells the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ renderer what to do.
+ This code will create an 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ with the sentence 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World!
+\begin_inset Quotes erd
+\end_inset
+
+ in it.
+ Try it yourself!
+\end_layout
+
+\begin_layout Enumerate
+Point your browser to 
+\family typewriter
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://latexbase.com"
+
+\end_inset
+
+
+\family default
+.
+ On the left side (black box) is where you put the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ code and on the right side (white box) is where it shows you your document.
+\end_layout
+
+\begin_layout Enumerate
+Delete all the code.
+\end_layout
+
+\begin_layout Enumerate
+Copy and paste the code from above into the black box at 
+\family typewriter
+latexbase.com
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Wait a moment...
+\end_layout
+
+\begin_layout Standard
+You should see your document on the right side.
+ It has only the words 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World!
+\begin_inset Quotes erd
+\end_inset
+
+ (plus just a touch more) because that's all we put in the document.
+ Scroll down to the bottom of the page and you will see the number 1, the
+ page number.
+ Pages of articles are normally numbered, so 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ puts that in for you! If you don't want page numbers because your whole
+ document is only going to be one page or you are writing a letter, you
+ can get rid of the page number by inserting the markup 
+\family typewriter
+
+\backslash
+pagestyle{empty}
+\family default
+.
+ This belongs between the 
+\family typewriter
+
+\backslash
+documentclass{article}
+\family default
+ and the 
+\family typewriter
+
+\backslash
+begin{document}
+\family default
+ tags, an area known as the 
+\series bold
+preamble
+\series default
+ of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ document.
+ Try it!
+\end_layout
+
+\begin_layout Enumerate
+Insert 
+\family typewriter
+
+\backslash
+pagestyle{empty}
+\family default
+ (on its own line) between 
+\family typewriter
+
+\backslash
+documentclass{article}
+\family default
+ and the 
+\family typewriter
+
+\backslash
+begin{document}
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Wait a moment...
+\end_layout
+
+\begin_layout Standard
+When 
+\family typewriter
+latexbase
+\family default
+ indicates that your document is ready (you will see the 
+\begin_inset Graphics
+	filename ready.png
+	height 12pt
+
+\end_inset
+
+ icon on the right side toward the top of the page), scroll down to the
+ bottom again.
+ The page number will be gone.
+\end_layout
+
+\begin_layout Subsection*
+Adding a list
+\end_layout
+
+\begin_layout Standard
+Now add a list of your three favorite classes of all time—of course math
+ class is first on your list, so that one has been put in for you.
+ You'll have to supply the next two...
+\end_layout
+
+\begin_layout Enumerate
+Copy and paste the following markup into your document on 
+\family typewriter
+latexbase
+\family default
+ (after 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World!
+\begin_inset Quotes erd
+\end_inset
+
+ but before 
+\family typewriter
+
+\backslash
+end{document}
+\family default
+ so that it is included in the document and appears after 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World!
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+par
+\end_layout
+
+\begin_layout LyX-Code
+My three favorite classes of all time are
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout LyX-Code
+   
+\backslash
+item Math
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+Notice that the 
+\family typewriter
+
+\backslash
+par
+\family default
+ tag does not have a begin or end.
+ It only marks where a new paragraph should start.
+ Same with the 
+\family typewriter
+
+\backslash
+item
+\family default
+ tag.
+ It only marks where a new item in the list should start.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Add two items to the enumeration (and you can change the first item if by
+ some chance math is not your all time favorite class).
+\end_layout
+
+\begin_layout Subsection*
+Adding an equation
+\end_layout
+
+\begin_layout Standard
+Equations in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+come in two varieties—inline and display.
+ An inline equation is any mathematical expression that appears in the middle
+ of a sentence (like the 
+\begin_inset Formula $\pi$
+\end_inset
+
+ right here and earlier in this document).
+ A display equation is any mathematical expression that should appear centered
+ on its own line (because it's super important or just because it's too
+ big to put in the middle of a sentence).
+\end_layout
+
+\begin_layout Standard
+To put an equation in the middle of a sentence, enclose the math between
+ two dollar signs ($).
+ To add a display equation, enclose the math between double dollar signs
+ ($$).
+ Try it!
+\end_layout
+
+\begin_layout Enumerate
+Copy and paste the following markup into your document on 
+\family typewriter
+latexbase
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Verbatim
+
+My favorite mathematical constant is $
+\backslash
+pi$, but I like $e$ too.
+\end_layout
+
+\begin_layout Verbatim
+
+Did you know that $$e^{i
+\backslash
+pi}=-1?$$ Weird...
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Notice that exponents are typeset using the same notation as used on a calculato
+r! Can you add markup to your document that will produce the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+The Pythagorean Theorem states that if a triangle has legs of lengths 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ and hypotenuse of length 
+\begin_inset Formula $c$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+a^{2}+b^{2}=c^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX 
+\end_layout
+
+\end_inset
+
+ Summary
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+
+\backslash
+documentclass{article}
+\family default
+ A 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX 
+\end_layout
+
+\end_inset
+
+ document must start with a declaration of the type of document—article,
+ book, report, or others.
+\end_layout
+
+\begin_layout Description
+preamble Markup between the 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+ and 
+\family typewriter
+
+\backslash
+begin{document}
+\family default
+ is part of the preamble and can be thought of as setup for the document
+ to come.
+ 
+\family typewriter
+
+\backslash
+pagestyle{empty}
+\family default
+ is an example of markup that may be found in the preamble.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+
+\backslash
+begin{document}..
+\backslash
+end{document}
+\family default
+ The beginning and end of the content of any 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX 
+\end_layout
+
+\end_inset
+
+ document are marked up this way.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+
+\backslash
+begin{enumerate}...
+\backslash
+end{enumerate}
+\family default
+ Create a numbered list.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+
+\backslash
+item
+\family default
+ Begin a new item in a list.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+
+\backslash
+par
+\family default
+ Begin a new paragraph.
+ New paragraphs can also be indicated by a blank line.
+ The 
+\family typewriter
+
+\backslash
+par
+\family default
+ is not necessary.
+\end_layout
+
+\begin_layout Subsection*
+Homework Exercises
+\end_layout
+
+\begin_layout Standard
+The following exercises are to be done at 
+\family typewriter
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://latexbase.com"
+
+\end_inset
+
+
+\family default
+.
+ Start the exercises by copying and pasting
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+documentclass{article}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{document}
+\end_layout
+
+\begin_layout LyX-Code
+Studious Student 
+\backslash
+par
+\end_layout
+
+\begin_layout LyX-Code
+MAT 140 Computational Tools for Math and Science 
+\backslash
+par
+\end_layout
+
+\begin_layout LyX-Code
+March 10, 2022 
+\backslash
+par
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout LyX-Code
+   
+\backslash
+item The appearance of this sentence will be changed in the first exercise.
+\end_layout
+
+\begin_layout LyX-Code
+   
+\backslash
+item This sentence's appearance will also be modified.
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{document}
+\end_layout
+
+\begin_layout Standard
+Replace 
+\begin_inset Quotes eld
+\end_inset
+
+Studious Student
+\begin_inset Quotes erd
+\end_inset
+
+ with your name.
+ Change the date to today's.
+ Add 
+\family typewriter
+
+\backslash
+item
+\family default
+'s to the list as needed, one for each question.
+\end_layout
+
+\begin_layout Enumerate
+In the first 
+\family typewriter
+
+\backslash
+item
+\family default
+ of your document, insert 
+\family typewriter
+
+\backslash
+textbf{
+\family default
+ before 
+\begin_inset Quotes eld
+\end_inset
+
+appearance
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\family typewriter
+}
+\family default
+ after (like so: 
+\family typewriter
+
+\backslash
+textbf{appearance}
+\family default
+.
+ Add a sentence to the item describing what happened to the word 
+\begin_inset Quotes eld
+\end_inset
+
+appearance
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In the second 
+\family typewriter
+
+\backslash
+item
+\family default
+ of your document, insert 
+\family typewriter
+
+\backslash
+textit{
+\family default
+ before 
+\begin_inset Quotes eld
+\end_inset
+
+appearance
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\family typewriter
+}
+\family default
+ after (like so: 
+\family typewriter
+
+\backslash
+textit{appearance}
+\family default
+.
+ Add a sentence to the item describing what happened to the word 
+\begin_inset Quotes eld
+\end_inset
+
+appearance
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Add 
+\family typewriter
+
+\backslash
+noindent
+\family default
+ at the beginning of the line with your name on it (like so: 
+\family typewriter
+
+\backslash
+noindent Studious Student
+\family default
+).
+ Add 
+\family typewriter
+
+\backslash
+noindent
+\family default
+ before the title of the class and the date too.
+ Then add a third 
+\family typewriter
+
+\backslash
+item
+\family default
+ to your list and describe what the 
+\family typewriter
+
+\backslash
+noindent
+\family default
+ markup does.
+\end_layout
+
+\begin_layout Enumerate
+Add a fourth 
+\family typewriter
+
+\backslash
+item
+\family default
+ and copy the following sentence into it.
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+Solve the equation $3x-7=12$.
+\end_layout
+
+\begin_layout Standard
+Don't actually solve the equation.
+ Just copy and paste it.
+ Then change the equation to 
+\begin_inset Formula $3x^{2}-7x^{3}=12$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Add a fifth 
+\family typewriter
+
+\backslash
+item
+\family default
+ and copy the following sentence into it.
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+The rational number $
+\backslash
+frac{7}{5}$ is greater than one.
+\end_layout
+
+\begin_layout Standard
+Then change the fraction so that it is a number less than one (and change
+ the sentence, too, so it isn't a lie!).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+For the sixth 
+\family typewriter
+
+\backslash
+item
+\family default
+ write markup that will produce the equation
+\begin_inset Formula 
+\[
+\sqrt{\frac{x}{y}}=\frac{\sqrt{x}}{\sqrt{y}}
+\]
+
+\end_inset
+
+Use 
+\family typewriter
+
+\backslash
+sqrt{ }
+\family default
+ for the square root (and put what you are trying to square root in between
+ the curly braces).
+\end_layout
+
+\end_body
+\end_document
