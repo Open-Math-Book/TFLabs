@@ -22,8 +22,8 @@ title: TFLabs -- Laboratories for Technological Fluency
 email: fieldsj1@southernct.edu
 description: >- # this means to ignore newlines until "baseurl:"
   This site contains a variety of resources needed for doing the assignments in the TFLabs book.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://open-math-book.github.io/TFLabs/"  # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/TFLabs" # the subpath of your site, e.g. /blog
+url: "http://open-math-book.github.io"  # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  osj1961
 
 # Build settings
