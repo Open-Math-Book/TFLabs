@@ -1,18 +1,138 @@
  
 \chapter{Writing}
 
+\section{HTML}
+\label{sec:html}
+
+Have you ever seen a web URL like 
+\begin{center}
+\href{https://www.agnesscott.edu/lriddle/women/love.htm}{\tt https://www.agnesscott.edu/lriddle/women/love.htm}
+\end{center}
+
+\noindent and wondered what the \texttt{https} or the \texttt{htm}
+meant? In both \texttt{https} and \texttt{htm}, the \texttt{ht} is
+short for hypertext. The \texttt{tp} in \texttt{https} is short for
+transfer protocol and the \texttt{s} is for secure. The \texttt{m}
+in \texttt{htm} is for markup. All webpages, when it comes down to
+it, are made of HTML (hypertext markup language) code. The HTML tells
+the browser what should be displayed and, in general terms, the desired
+layout. The browser takes care of the fine details depending on the
+type of device, size of the screen, or personal preferences set by
+the user.
+
+Markup in HTML is like a note to the browser telling the browser how
+to display the following content. The markup won't be displayed, but
+it will modify how the content will be displayed. Take this screenshot
+from \texttt{\href{https://www.southernct.edu/}{https://www.southernct.edu/}}
+for instance.
+\begin{center}
+\includegraphics[width=4in]{write/SCSUscreenshot}
+\par\end{center}
+
+\noindent Simplified just a bit, the HTML code that produces the ``Back
+to Campus'' announcement above looks like this:
+\begin{verbatim}
+<img src="/sites/default/files/back-to-campus-banner.jpg" /><p style
+="font-size: 18px;">As the university prepares for the start of the
+fall 2021 semester, we remain #SouthernStrong, with <a href="https://
+inside.southernct.edu/reopening#services">all of the following academic
+offerings and campus services</a> in place for our students in a safe,
+engaging campus environment. Our goal is to get you off to a great
+start, whether you're returning to campus or joining our community for
+the first time!</p>
+\end{verbatim}
+
+\noindent It is just simple text! No bells, no whistles. Parts enclosed by \texttt{<}
+and \texttt{>} are the markup. These parts will not be displayed themselves
+but rather describe how something is to be displayed and leaves the
+rest up to the browser. For example,
+
+\begin{center}
+\verb+<img src="/sites/default/files/back-to-campus-banner.jpg"/>}+
+\par\end{center}
+
+\noindent tells the browswer to insert an image ({\tt img}) and
+tells the browser where to get the image ({\tt src}). This part
+of the code creates
+
+\begin{center}
+\includegraphics[width=4in]{write/back-to-campus-banner}
+\par\end{center}
+  
+\noindent The rest of the code creates the paragraph underneath this
+image. It starts with \verb+<p style="font-size: 18px;" >+ --- which
+tells the browser to start a paragraph ({\tt p}) using an 18 pixel
+font---and ends with \verb+</p>+, which tells the browser this
+is the end of the paragraph. In the middle of the paragraph is what
+makes webpages webpages---a hyperlink. The text between 
+\verb+<a href="https://inside.southernct.edu/reopening\#services" >+
+and \verb+</a>+ is marked up as a link, it's displayed in blue so the reader can see that
+these words are where they can click. Clicking them will bring up a new webpage in
+the browser.
+\clearpage
+
+\begin{worksheet}{1}{Working with markup}{figures/html.pdf}
+\input{write/lab1}
+\end{worksheet}
 
 \section{LaTeX}
 \label{sec:latex}
 
-Donald Knuth is an amazing Zen master of Computer Science and Mathematics.  He created a program called \TeX (pronounced like ``tech'') for typesetting -- especially typesetting with mathematical content.  Knuth wrote \TeX mainly as an example of a style of coding that he called ``literate programming.''  Essentially this means that the programmer creates the documentation for their work at the same time they write the actual code.  Whether it's because of it being written in the ``literate programming'' style or simply because of Knuth's amazingness, \TeX is renowned as one of the most bug-free systems in existance. 
+Donald Knuth is an amazing Zen master of Computer Science and Mathematics.  He created a program called \TeX (pronounced like ``tech'') for typesetting -- especially typesetting with mathematical content.  Knuth wrote \TeX mainly as an example of a style of coding that he called ``literate programming.''  Essentially this means that the programmer creates the documentation for their work at the same time they write the actual code.  Whether it's because of it being written in the ``literate programming'' style or simply because of Knuth's amazingness, \TeX\  is renowned as one of the most bug-free systems in existance. 
 
-\TeX, and a follow-on program known as \LaTeX which builds on \TeX and extends it, have become the standard(s) for communicating mathematics.
+\TeX\ , and a follow-on program known as \LaTeX\ , which builds on \TeX\  and extends it, have become the standard(s) for communicating mathematics.  We'll be talking only about \LaTeX\ from here onward.  \LaTeX\ is much like HTML -- it is a sort of markup language that gets processed and turned into a document suitable for visual display.  The appearance of \LaTeX source code is very different from that of HTML source code, but in many ways they are incredibly similar!  There are two marked distinctions:  HTML is meant to describe how to lay out a page so that the content is clear, and do so on many different displays -- the web-browser is empowered to alter things to aid in that clarity. On the other hand, \LaTeX is much more focussed on layout -- the first thing one does in a \LaTeX document is to specify the page size.  The author of a \LaTeX document can closely control where things will end up on that page\footnote{There is a strong argument against doing so -- the author should really concentrate on content, and let the software control the individual pixels on the page.}.
+The other big difference between these systems is how well they handle mathematical content.  \LaTeX is very, very good at rendering mathematics and mathish notation from other fields like Chemistry.  HTML stinks at that, which is completely weird since the original HTML standard was created by a physicist at CERN, and physicists tend to use a lot of math\textellipsis
+
+In a nutshell, HTML (the markup language of webpages) is used to
+control how a webpage appears. \LaTeX\  plays the same role for printed
+documents like books, reports, letters, or labs (like this one!).
+\LaTeX\  is a markup language that excels at creating technical documents,
+especially those that include mathematical formulas. You might want
+to read \href{https://medium.com/swlh/the-students-guide-to-latex-markup-what-it-is-and-why-you-want-it-651e723ce0c8}{this blog}
+all about why you want to learn \LaTeX.
+
+Like HTML, \LaTeX\  uses tags to mark how text should look, to insert
+graphics, to create lists, and so on. Markup in \LaTeX\  begins with
+a \textbackslash{} (a backslash) as in {\tt \textbackslash pi},
+which would be used to render our friend, $\pi$. Every \LaTeX\ 
+document begins with the {\tt \textbackslash documentclass} tag,
+which specifies what type of document is to be created (book, article,
+report, etc.).  This is similar to HTML documents, which all begin with the \verb+<html>+
+tag and end with the \verb+</html>+ tag. After the documentclass tag a \LaTeX\  document must include the
+tags {\tt \textbackslash begin\{document\}} and {\tt \textbackslash end\{document\}}.\footnote{This is similar to HTML documents, in which the beginning of the content
+is marked by {\tt <body>} and the end by {\tt </body>}.} As you can probably guess, these tags mark the beginning and end
+of the content of the document. One of the simplest \LaTeX\  documents
+possible is this one:
+
+\begin{codeblock}
+\begin{verbatim}
+\documentclass{article}
+\begin{document}
+
+Hello World!
+
+\end{document}
+\end{verbatim}
+\end{codeblock}
+
+Just like HTML code, it isn't pretty! However, it tells the \LaTeX\ 
+renderer what to do. This code will create an ``article'' with the
+sentence ``Hello World!'' in it. 
+
+Let's give it a try!
+
+The next lab will lead you through the process of creating \LaTeX documents on a web-based service known as {\em Overleaf}.
+
+\clearpage
+\begin{worksheet}{2}{Getting started with \LaTeX}{figures/latex.pdf}
+\input{write/lab2}
+\end{worksheet}
+
 
 
 \section{MathJax}
 \label{sec:mathjax}
 
-\section{Markup (Blogs and Wikis)}
+\section{More Markup (Blogs and Wikis)}
 \label{sec:markup}
 

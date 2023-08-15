@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09, custom)"
+   sodipodi:docname="latex.svg"
+   inkscape:export-filename="../edd2897d/latex.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="1.0708779"
+     inkscape:cx="304.42313"
+     inkscape:cy="573.82826"
+     inkscape:window-width="1452"
+     inkscape:window-height="752"
+     inkscape:window-x="273"
+     inkscape:window-y="219"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#cccccc;stroke-width:0.264583"
+       id="rect166"
+       width="57.382008"
+       height="48.293316"
+       x="60.863506"
+       y="123.09425"
+       rx="5"
+       ry="5" />
+    <text
+       xml:space="preserve"
+       style="font-weight:normal;font-size:14.81666667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.264583;font-style:italic;font-stretch:normal;font-variant:normal;fill:#800000"
+       x="68.106125"
+       y="152.3528"
+       id="text223"><tspan
+         sodipodi:role="line"
+         id="tspan221"
+         style="stroke-width:0.264583;-inkscape-font-specification:'sans-serif Italic';font-family:sans-serif;font-weight:normal;font-style:italic;font-stretch:normal;font-variant:normal;font-size:14.81666667px;fill:#800000"
+         x="68.106125"
+         y="152.3528">LaTeX</tspan></text>
+  </g>
+</svg>

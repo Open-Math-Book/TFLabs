@@ -1,0 +1,43 @@
+To see markup in action, point your browser to 
+
+\centerline{ \texttt{\href{https://htmledit.squarefree.com/}{https://htmledit.squarefree.com/}}, }
+
+\noindent where you can write some hypertext markup and see how it looks on
+your browser. The blue box at the top holds the markup, and it can
+be edited by you! The box below shows how the browser renders the
+markup. Do the following exercises on the \texttt{squarefree} webpage
+and answer the questions.
+\begin{enumerate}
+\item Insert \texttt{<em>} before the word magically and insert \texttt{</em>}
+after the word magically. What did this accomplish? Note: \texttt{em}
+is short for \textit{em}phasis!
+\item Copy and paste the following code into the webpage.
+
+\begin{verbatim}
+<p>A list of some common HTML markup
+<ol>
+ <li><tt>p</tt> is short for <b>p</b>aragraph</li>
+ <li><tt>a</tt> is short for <b>a</b>nchor (which can
+indicate a link or a place to link to)</li>
+ <li><tt>ol</tt> is short for <b>o</b>rdered <b>l</b>ist</li>
+ <li><tt>li</tt> is short for <b>l</b>ist <b>i</b>tem</li>
+</ol>
+
+Notice that markup can be nested -- the b and /b tags above are
+inside the li and /li tags, which are between the ol and /ol
+tags.</p>
+\end{verbatim}
+
+
+\item What happens to text between the \texttt{<b>} and \texttt{</b>} tags?
+\item What happens to text between the \texttt{<tt>} and \texttt{</tt>}
+tags?
+
+
+\item Now change the \texttt{<ol>} and \texttt{</ol>} tags to \texttt{<ul>}
+and \texttt{</ul>} tags. What happens to the displayed page (in the
+white box)? Note: \texttt{ul} is short for \textbf{u}nordered \textbf{l}ist.
+
+\item Notice how the b and /b tags in the last sentence are missing the usual angle brackets?  What happens if you put them in?
+\item This is a problem in all markup languages -- some characters have special meaning.  In HTML there are so-called {\em escape characters} to work around this issue.  Google the phrase ``html escape characters'' and see if you can re-write the last sentence so that things {\bf look like} a tag, but don't {\bf act like} a tag!
+\end{enumerate}

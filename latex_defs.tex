@@ -1,11 +1,14 @@
+\usepackage[english]{babel} %language selection
+\selectlanguage{english}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{ulem}
 
-\newlength{\cwidth}
-\newcommand{\cents}{\settowidth{\cwidth}{c}%
-\divide\cwidth by2
-\advance\cwidth by-.1pt
-c\kern-\cwidth
-\vrule width .1pt depth.2ex height1.2ex
-\kern\cwidth}
 
 \newcommand{\sageprompt}{ {\tt sage$>$} }
 \newcommand{\tab}{\rule{20pt}{0pt}}
@@ -48,3 +51,16 @@ c\kern-\cwidth
 \renewenvironment{proof}%
 {\begin{quote} \emph{Proof:} }%
 {\rule{0pt}{0pt} \newline \rule{0pt}{15pt} \hfill Q.E.D. \end{quote}}
+
+\newenvironment{worksheet}[3]{%
+\begin{tabular*}{6in}{l @{\extracolsep{\fill}} r} \hline %
+\begin{tabular}[c]{l} %
+ {\huge Lab: #1} \\%    %% #1 is a sequence number (should be done automagically, but...  reasons)
+{\rule{0pt}{22pt}\LARGE #2} \\%        %% #2 is the title of the activity
+\end{tabular} &  \begin{tabular}[c]{r} %
+\rule{0pt}{1.05in}\includegraphics[height=1in]{#3} \\%  %% #3 is a thumbnail image for the activity
+\end{tabular}  \\ \hline%
+\end{tabular*}%
+\par \rule{0pt}{6pt} \par \noindent }{\clearpage}
+
+\newenvironment{codeblock}{ \par \rule{0pt}{12pt} \par \hfill \begin{minipage}{0.9\textwidth} }{ \end{minipage} \par \rule{0pt}{12pt} \par }
