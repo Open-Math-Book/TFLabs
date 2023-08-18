@@ -1,4 +1,4 @@
- 
+
 \chapter{Writing}
 
 \section{HTML}
@@ -128,7 +128,59 @@ The next lab will lead you through the process of creating \LaTeX documents on a
 \input{write/lab2}
 \end{worksheet}
 
+\section{More LaTeX}
+\label{sec:more_latex}
 
+Before we get to working a bit more with \LaTeX , let's do some configuring that will save you a little typing going forward.
+When you create a new project in Overleaf, the system automatically puts your name in as the document's author.  Unfortunately, it usually doesn't get your name right.  Click the ``home'' icon (in the upper left, next to ``Menu'').  There is a drop-down labelled ``Account'' select ``Account Settings'' from it and then fix your first and last names.
+
+Now if you create a new blank project, the preamble of your new documents should look something like this:
+
+\begin{codeblock}
+\begin{verbatim}
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{hello}
+\author{Joe Fields}
+\date{August 2023}
+
+\end{verbatim}
+\end{codeblock}
+
+Notice that commands all start with a backslash followed by the command name, followed by something in curly braces.  Well, not quite -- the thing in curly braces (a.k.a french braces) is called the argument of the command -- some commands don't have arguments, others have more than one. So the very first thing in the preamble is a {\tt documentclass} command, whose argument is the word ``article.''  Often such a command will also have optional arguements -- these are collected in square braces between the command name and the curly brace arguments.
+
+For example:
+
+\begin{codeblock}
+\begin{verbatim}
+\documentclass[12pt]{article}
+
+\end{verbatim}
+\end{codeblock}
+
+Would make an article with a slightly larger font.  (Font styles and size can be set inside the document too.)  There are quite a few other optional arguments available.
+
+The second line of the preamble has a couple of things worth mentioning.  The first is that there is a comment.  Any text after a \% sign is ignored, so this gives you a way to write little ``note-to-self''s.  The second is what the line is doing -- adding to the default behavior of latex.  There is a large community of \LaTeX\  users who actively develop new features.  These features are made available through {\em packages}.  
+
+The \LaTeX\  source for this book makes use of a lot of packages: 
+hyperref, geometry, fncychap, babel, makeidx, graphicx, rotating, amssymb, amsmath, amsthm, color, and ulem.  We'll explore a couple of those in the lab.
+
+Before we head to the lab, we need to give you a little history lesson.
+
+In the early days of computing they developed a system called ASCII (the American Standard Code for Information Interchange).  The original ASCII code used 7-bits of data to encode a character.
+Seven bits allows for 128 different binary codes, which is plenty for upper- and lower-case letters, punctuation, and some control characters\footnote{This is why there's still a key on your keyboard labelled ``Ctrl''}  Those original control codes were meant to literally control the position of the typewriter head -- do things like ``move to the next line'' or ``bring the head to position 1.'' 
+
+Anyway, \LaTeX\ (by default) uses the ASCII character encoding.  This is actually a reasonable choice since ASCII is in some sense a lowest common denomenator.  Modern environments tend to use either ISO-8859-1 (a.k.a., Latin 1) which supports most characters for European languages, or UTF-8.  UTF-8 is usually just referred to as ``Unicode.''  It is a multi-byte encoding, and supports essentally every human language.  
+
+Why is any of this important for us?  Well, if you copy (cut and paste) text from some source on the internet, it's pretty likely that that text will be encoded in one of these more modern schemes.  \LaTeX won't quite know what to do with it, and there will be weird, tangled little confusion symbol in your output.  
+
+Don't worry too much, somebody wrote a package for that.
+
+\clearpage
+\begin{worksheet}{3}{More with \LaTeX}{figures/latex.pdf}
+\input{write/lab3}
+\end{worksheet}
 
 \section{MathJax}
 \label{sec:mathjax}

@@ -1,0 +1,75 @@
+\begin{enumerate}
+	\item Did you fix your name in the Overleaf ``Account'' area?
+	\item Okay. Then, start a new blank project called ``more''
+	\item Add the following lines into the preamble of your document:
+\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+%\usepackage{geometry}
+%\usepackage{hyperref}
+\end{verbatim}
+\end{codeblock}
+
+Of course, the commands you've just entered start with the comment symbol so they won't {\em do} anything.  Did you notice how the Overleaf source editor renders them in green?
+
+	\item Now, add the following to the body of your document.  (After the \verb+\section{Introduction}+ command)
+\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+The first thing you should notice is that the text is a little
+bigger than it was last time.  You may also have noticed that 
+the margins are a bit big by default.  For illustration purposes 
+we need a paragraph that is long enough to ensure we've 
+reached the right margin.  This one should do the trick.
+\end{verbatim}
+\end{codeblock}
+\medskip
+
+	\item Hit the ``Recompile'' button.  Did you notice is that the text is a little bigger than it was last time?
+	\item Try deleting the \verb+[12pt]+ optional argument to the \verb+\documentclass+ command.  Hit ``Recompile.'' Do you see the difference now?  
+	\item Put the \verb+[12pt]+ optional argument back and recompile one last time.
+	\item Okay, now what about that comment about \LaTeX{}'s margins?  Try uncommenting the line that includes the {\tt geometry} package.
+	Recompile.  What's changed?
+	\item The {\tt geometry} package will give you minute control over your document's margins.  The default margins when the {\tt geometry} package is in use are a good bit smaller than \LaTeX{}'s defaults.
+	\item Try replacing the {\tt geometry} line with this one:
+\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+\usepackage[bottom=1in, right=.5in, left=.5in, top=1in]{geometry}
+\end{verbatim}
+\end{codeblock}
+\medskip
+
+    \item Play around a bit.  What settings for the margins are most pleasing to your eyes?
+    \item Now, uncomment the \verb+\usepackage{hyperref}+ command.  Recompile.
+    \item Did you see anything change?
+    \item If you did, it's probably your imagination. Hyperref doesn't make any visible changes -- it provide you with some new commands!
+    \item Drop the following line into your source file:
+\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+This is a 
+\href{https://www.cespedes.org/blog/85/how-to-escape-latex-special-characters}{link} 
+to a page that gives some good information about special characters in \LaTeX{}.  
+You may notice that the {\tt href} command provided by the {\tt hyperref} package 
+is our first example of a \LaTeX{} command that has two arguments.
+\end{verbatim}
+\end{codeblock}
+\medskip
+
+	\item I don't know about you, but I really don't like how hyperlinks are rendered by default.  If you put the following right after the \verb+\usepackage{hyperref}+ command you'll get a nicer appearance.
+\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+\hypersetup{colorlinks=true,  urlcolor=blue}
+\end{verbatim}
+\end{codeblock}
+\medskip
+
+
+\end{enumerate}
