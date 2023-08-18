@@ -1,7 +1,17 @@
 \begin{enumerate}
 	\item Did you fix your name in the Overleaf ``Account'' area?
 	\item Okay. Then, start a new blank project called ``more''
-	\item Add the following lines into the preamble of your document:
+	\item Edit the first line of your new project to include an optional argument for the \verb+\documentclass+ command:
+	\medskip
+
+\begin{codeblock}
+\begin{verbatim}
+	\documentclass[12pt]{article}
+\end{verbatim}
+\end{codeblock}
+\medskip
+
+	\item Also, add the following lines into the preamble of your document:
 \medskip
 
 \begin{codeblock}
@@ -53,10 +63,12 @@ reached the right margin.  This one should do the trick.
 \begin{codeblock}
 \begin{verbatim}
 This is a 
-\href{https://www.cespedes.org/blog/85/how-to-escape-latex-special-characters}{link} 
-to a page that gives some good information about special characters in \LaTeX{}.  
-You may notice that the {\tt href} command provided by the {\tt hyperref} package 
-is our first example of a \LaTeX{} command that has two arguments.
+\href{https://www.cespedes.org/blog/85/}{link} 
+to a page that gives some good information about 
+special characters in \LaTeX{}.  You may notice 
+that the {\tt href} command provided by the 
+{\tt hyperref} package is our first example of a 
+\LaTeX{} command that has two arguments.
 \end{verbatim}
 \end{codeblock}
 \medskip
