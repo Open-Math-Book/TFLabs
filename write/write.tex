@@ -1,5 +1,5 @@
-
 \chapter{Writing}
+\label{ch:write}
 
 \section{HTML}
 \label{sec:html}
@@ -26,7 +26,7 @@ it will modify how the content will be displayed. Take this screenshot
 from \texttt{\href{https://www.southernct.edu/}{https://www.southernct.edu/}}
 for instance.
 \begin{center}
-\includegraphics[width=4in]{write/SCSUscreenshot}
+\includegraphics[width=4in]{SCSUscreenshot}
 \par\end{center}
 
 \noindent Simplified just a bit, the HTML code that produces the ``Back
@@ -56,7 +56,7 @@ tells the browser where to get the image ({\tt src}). This part
 of the code creates
 
 \begin{center}
-\includegraphics[width=4in]{write/back-to-campus-banner}
+\includegraphics[width=4in]{back-to-campus-banner}
 \par\end{center}
   
 \noindent The rest of the code creates the paragraph underneath this
@@ -71,37 +71,37 @@ these words are where they can click. Clicking them will bring up a new webpage 
 the browser.
 \clearpage
 
-\begin{worksheet}{1}{Working with markup}{figures/html.pdf}
+\begin{worksheet}{1}{Working with markup}{html.pdf}
 \input{write/lab1}
 \end{worksheet}
 
 \section{LaTeX}
 \label{sec:latex}
 
-Donald Knuth is an amazing Zen master of Computer Science and Mathematics.  He created a program called \TeX (pronounced like ``tech'') for typesetting -- especially typesetting with mathematical content.  Knuth wrote \TeX mainly as an example of a style of coding that he called ``literate programming.''  Essentially this means that the programmer creates the documentation for their work at the same time they write the actual code.  Whether it's because of it being written in the ``literate programming'' style or simply because of Knuth's amazingness, \TeX\  is renowned as one of the most bug-free systems in existance. 
+Donald Knuth is an amazing Zen master of Computer Science and Mathematics.  He created a program called \TeX{} (pronounced like ``tech'') for typesetting -- especially typesetting with mathematical content.  Knuth wrote \TeX{} mainly as an example of a style of coding that he called ``literate programming.''  Essentially this means that the programmer creates the documentation for their work at the same time they write the actual code.  Whether it's because of it being written in the ``literate programming'' style or simply because of Knuth's amazingness, \TeX{} is renowned as one of the most bug-free systems in existance. 
 
-\TeX\ , and a follow-on program known as \LaTeX\ , which builds on \TeX\  and extends it, have become the standard(s) for communicating mathematics.  We'll be talking only about \LaTeX\ from here onward.  \LaTeX\ is much like HTML -- it is a sort of markup language that gets processed and turned into a document suitable for visual display.  The appearance of \LaTeX source code is very different from that of HTML source code, but in many ways they are incredibly similar!  There are two marked distinctions:  HTML is meant to describe how to lay out a page so that the content is clear, and do so on many different displays -- the web-browser is empowered to alter things to aid in that clarity. On the other hand, \LaTeX is much more focussed on layout -- the first thing one does in a \LaTeX document is to specify the page size.  The author of a \LaTeX document can closely control where things will end up on that page\footnote{There is a strong argument against doing so -- the author should really concentrate on content, and let the software control the individual pixels on the page.}.
-The other big difference between these systems is how well they handle mathematical content.  \LaTeX is very, very good at rendering mathematics and mathish notation from other fields like Chemistry.  HTML stinks at that, which is completely weird since the original HTML standard was created by a physicist at CERN, and physicists tend to use a lot of math\textellipsis
+\TeX{}, and a follow-on program known as \LaTeX{}, which builds on \TeX{} and extends it, have become the standard(s) for communicating mathematics.  We'll be talking only about \LaTeX{}  from here onward.  \LaTeX{} is much like HTML -- it is a sort of markup language that gets processed and turned into a document suitable for visual display.  The appearance of \LaTeX{} source code is very different from that of HTML source code, but in many ways they are incredibly similar!  There are two marked distinctions:  HTML is meant to describe how to lay out a page so that the content is clear, and do so on many different displays -- the web-browser is empowered to alter things to aid in that clarity. On the other hand, \LaTeX{} is much more focussed on layout -- the first thing one does in a \LaTeX{} document is to specify the page size.  The author of a \LaTeX{} document can closely control where things will end up on that page\footnote{There is a strong argument against doing so -- the author should really concentrate on content, and let the software control the individual pixels on the page.}.
+The other big difference between these systems is how well they handle mathematical content.  \LaTeX{} is very, very good at rendering mathematics and mathish notation from other fields like Chemistry.  HTML stinks at that, which is completely weird since the original HTML standard was created by a physicist at CERN, and physicists tend to use a lot of math\textellipsis
 
 In a nutshell, HTML (the markup language of webpages) is used to
-control how a webpage appears. \LaTeX\  plays the same role for printed
+control how a webpage appears. \LaTeX{} plays the same role for printed
 documents like books, reports, letters, or labs (like this one!).
-\LaTeX\  is a markup language that excels at creating technical documents,
+\LaTeX{}   is a markup language that excels at creating technical documents,
 especially those that include mathematical formulas. You might want
 to read \href{https://medium.com/swlh/the-students-guide-to-latex-markup-what-it-is-and-why-you-want-it-651e723ce0c8}{this blog}
-all about why you want to learn \LaTeX.
+all about why you want to learn \LaTeX{}.
 
-Like HTML, \LaTeX\  uses tags to mark how text should look, to insert
-graphics, to create lists, and so on. Markup in \LaTeX\  begins with
+Like HTML, \LaTeX{} uses tags to mark how text should look, to insert
+graphics, to create lists, and so on. Markup in \LaTeX{}   begins with
 a \textbackslash{} (a backslash) as in {\tt \textbackslash pi},
-which would be used to render our friend, $\pi$. Every \LaTeX\ 
+which would be used to render our friend, $\pi$. Every \LaTeX{}  
 document begins with the {\tt \textbackslash documentclass} tag,
 which specifies what type of document is to be created (book, article,
 report, etc.).  This is similar to HTML documents, which all begin with the \verb+<html>+
-tag and end with the \verb+</html>+ tag. After the documentclass tag a \LaTeX\  document must include the
+tag and end with the \verb+</html>+ tag. After the documentclass tag a \LaTeX{}   document must include the
 tags {\tt \textbackslash begin\{document\}} and {\tt \textbackslash end\{document\}}.\footnote{This is similar to HTML documents, in which the beginning of the content
 is marked by {\tt <body>} and the end by {\tt </body>}.} As you can probably guess, these tags mark the beginning and end
-of the content of the document. One of the simplest \LaTeX\  documents
+of the content of the document. One of the simplest \LaTeX{} documents
 possible is this one:
 
 \begin{codeblock}
@@ -115,23 +115,23 @@ Hello World!
 \end{verbatim}
 \end{codeblock}
 
-Just like HTML code, it isn't pretty! However, it tells the \LaTeX\ 
+Just like HTML code, it isn't pretty! However, it tells the \LaTeX{}  
 renderer what to do. This code will create an ``article'' with the
 sentence ``Hello World!'' in it. 
 
 Let's give it a try!
 
-The next lab will lead you through the process of creating \LaTeX documents on a web-based service known as {\em Overleaf}.
+The next lab will lead you through the process of creating \LaTeX{} documents on a web-based service known as {\em Overleaf}.
 
 \clearpage
-\begin{worksheet}{2}{Getting started with \LaTeX}{figures/latex.pdf}
+\begin{worksheet}{2}{Getting started with \LaTeX}{latex.pdf}
 \input{write/lab2}
 \end{worksheet}
 
 \section{More LaTeX}
 \label{sec:more_latex}
 
-Before we get to working a bit more with \LaTeX , let's do some configuring that will save you a little typing going forward.
+Before we get to working a bit more with \LaTeX{}, let's do some configuring that will save you a little typing going forward.
 When you create a new project in Overleaf, the system automatically puts your name in as the document's author.  Unfortunately, it usually doesn't get your name right.  Click the ``home'' icon (in the upper left, next to ``Menu'').  There is a drop-down labelled ``Account'' select ``Account Settings'' from it and then fix your first and last names.
 
 Now if you create a new blank project, the preamble of your new documents should look something like this:
@@ -161,24 +161,90 @@ For example:
 
 Would make an article with a slightly larger font.  (Font styles and size can be set inside the document too.)  There are quite a few other optional arguments available.
 
-The second line of the preamble has a couple of things worth mentioning.  The first is that there is a comment.  Any text after a \% sign is ignored, so this gives you a way to write little ``note-to-self''s.  The second is what the line is doing -- adding to the default behavior of latex.  There is a large community of \LaTeX\  users who actively develop new features.  These features are made available through {\em packages}.  
+The second line of the preamble has a couple of things worth mentioning.  The first is that there is a comment.  Any text after a \% sign is ignored, so this gives you a way to write little ``note-to-self''s.  The second is what the line is doing -- adding to the default behavior of latex.  There is a large community of \LaTeX{}   users who actively develop new features.  These features are made available through {\em packages}.  
 
-The \LaTeX\  source for this book makes use of a lot of packages: 
+The \LaTeX{}   source for this book makes use of a lot of packages: 
 hyperref, geometry, fncychap, babel, makeidx, graphicx, rotating, amssymb, amsmath, amsthm, color, and ulem.  We'll explore a couple of those in the lab.
 
 
 \clearpage
-\begin{worksheet}{3}{More with \LaTeX}{figures/latex.pdf}
+\begin{worksheet}{3}{More with \LaTeX}{latex.pdf}
 \input{write/lab3}
 \end{worksheet}
 \clearpage
 
 \section{even more LaTeX}
-\label{sec:latex}
+\label{sec:even_more_latex}
+
+There's a term you'll hear in the publishing world and sometimes in Computer Science: whitespace.
+It's a collective term for all of the symbols that don't end up putting ink on the page. Basically, the whitespace characters are: the space key, the tab key, and the Enter key.  In \LaTeX{}  the only thing whitespace characters do is seperate the printable things (ordinary characters and \LaTeX{}  commands).  In particular, they don't add extra space!  You can put a single blank line between two paragraph, or you can put 27 blank lines.  The output will look the same.  THIS CAN BE MADDENING!  You notice that an inline equation looks a little pinched in too close to the surrounding text, so you put in some extra spaces, and it has no effect.  So you put in some more spaces, and still nothing happens.  They say insanity consists of repeating the same experiment expecting different results.  Try not to travel too far down that path!  Maybe repeat the mantra ``whitespace is just whitespace'' while you're doing the next lab -- don't expect it to produce actual space\textellipsis
+
+So, how {\em do} we produce actual space?  How do we fine tune the space between things?  (This might mean adding or {\em subtracting} space.)
+
+First, you should probably ask yourself if the change you want is really desireable.  \LaTeX{}  has some pretty good algorithms for calculating spacing\textellipsis
+
+Second, you should check if there's a systematic way to make the change you want.  For instance, if you want a little additional space between your paragraphs, you can put something in the preamble that adjusts those inter-paragraph spaces throughout the document:
+
+\begin{codeblock}
+\begin{verbatim}
+\setlength{\parskip}{8pt}
+\end{verbatim}
+\end{codeblock}
+
+\noindent or, if you want your whole document to be double-spaced:
+
+\begin{codeblock}
+\begin{verbatim}
+\linespread{2.0}
+\end{verbatim}
+\end{codeblock}
+
+But, if you really want fine-grained control there are commands for adding vertical and horizontal space:
+
+\begin{codeblock}
+\begin{verbatim}
+Hickory dickory dock \hspace{1in} The mouse went up the clock.
+
+\vspace{.5in}
+
+The clock struck one. The mouse went down. Hickory dickory dock
+\end{verbatim}
+\end{codeblock}
+
+Will give output that looks like this:
+
+\begin{center}
+\fbox{\includegraphics[width=6in]{Hickory.png}}
+\end{center}
+
+In math mode there are special spacing commands (\verb+ \,  \;  \!  \quad+) that we can use to make finicky adjustments to the positions of symbols.  
+
+If all else fails there are struts.  \LaTeX{} has a command that's meant to create a rectangular blob of ink -- 
+\verb+\rule{width}{height}+, but if you make one of those lengths $0$ the resulting blob won't have any ink in it -- it'll be an invisible thing that just takes up space -- that's called a strut.  I sincerely hope you don't find yourself creating struts in this course.  They're really frowned upon -- there's almost always some better way of handling things than making an invisible space-taking-upping thing.  Just thought you should know, 'cause sometimes\textellipsis
+
+\clearpage
+\begin{worksheet}{4}{More more with \LaTeX}{latex.pdf}
+\input{write/lab4}
+\end{worksheet}
+\clearpage
 
 \section{MathJax}
 \label{sec:mathjax}
 
-\section{More Markup (Blogs and Wikis)}
-\label{sec:markup}
+\LaTeX{} is getting somewhat dated.  It seems likely that it'll be supplanted by something more user-friendly at some time during your professional career.  Still, the notation that \LaTeX{} uses to encode mathematical content works incredibly well.  It pops up in unexpected places.  For instance, when Mathematicians and/or Scientists are communicating via email, and some math needs to be expressed, out come the dollar signs!  The object of study in this section is MathJax -- a javascript package that allows one to include mathematical content into webpages.  Perhaps it won't be surprising to learn that \LaTeX{} math notation is involved!
 
+Unfortunately, the sandbox where we played with HTML markup previously doesn't allow for scripting (and MathJax is a script) so we will need to work in a more permissive environment.  Google makes a free service called Sites available to the public.  This is ``free as in beer'' not ``free as in liberty'' but still, it's pretty cool that they make something available to the general public that lets folks create websites in a (more or less) ``What You See Is What You Get'' environment.  But, there is a bit of a backdoor!  One can also drop arbitrary HTML code into a Google sites page.  
+
+That's where we are going in the next lab.
+
+\clearpage
+\begin{worksheet}{5}{MathJax}{MathJaxLogo.png}
+\input{write/lab5}
+\end{worksheet}
+\clearpage
+
+
+%\section{More Markup (Blogs and Wikis)}
+%\label{sec:markup}
+
+%% Move the Markup section into the CAS chapter.

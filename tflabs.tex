@@ -1,57 +1,17 @@
 \documentclass[pdftex,12pt,twoside]{book}
-\RequirePackage[pdftex]{hyperref}
-\hypersetup{colorlinks=true, %
-  linkcolor=red,%  %% links within the doc e.g. ToC entries
-  urlcolor=blue,%  %% links to the interwebs
-  plainpages=false, %
-  pdfpagelabels, %
-  %hyperindex=true, %
-  %backref=true, %
-  %bookmarks=true, %
-  pdftitle={Tech Fluency Labs for Math and Science Students, Version 0.1}, %
-  pdfauthor={Len Brin, Joe Fields, Younhee Lee and Ray Mugno}, %
-  pdfsubject={Computational tools for mathematics}, %
-  %pdfpagelayout=SinglePage, %
-  %pdfpagetransition=Dissolve, %
-  pdfstartview=FitH, %
-  %pdfstartpage=1, %
-  %pdffitwindow=true
-}
-\pdfcompresslevel=9
-
-
-
 
 \usepackage[Bjornstrup]{fncychap}
 
-
-%All my customized LaTeX commands are in this file:
-
+%Other package includes and customized LaTeX commands are in this file:
 \input{latex_defs.tex}
 
-%Things that effect the size and placement of text on the page
-
-\renewcommand{\baselinestretch}{1.2}
-\renewcommand{\arraystretch}{.83}
-
-%\addtolength{\topmargin}{-.5in}
-%\addtolength{\textheight}{1.25in}
-%\addtolength{\textwidth}{.25in}
-%\addtolength{\oddsidemargin}{.25in}
-%\addtolength{\evensidemargin}{-.25in}
-
-%\usepackage[bottom=1in, right=1in, left=1in, top=1in]{geometry}
-\usepackage[  
-    letterpaper,
-    bindingoffset=0.875in,
-    textwidth=6.25in,
-    top=1in,
-    bottom=1in
-]{geometry}
+\geometry{letterpaper, %
+    bindingoffset=0.875in, %
+    textwidth=6.25in, %
+    top=1in, %
+    bottom=1in}
 
 \makeindex
-
-\graphicspath{{figures/}}
 
 \begin{document}
 
@@ -107,10 +67,15 @@
 
 \include{intro/intro}
 \include{write/write}
+\include{cas/cas}
 \include{spread/spread}
 \include{geom/geom}
 %\include{stats/stats}
-\include{cas/cas}
+
+
+\nocite{texbook}
+\nocite{latex}
+\nocite{strunk-and-white}
 
 \addcontentsline{toc}{chapter}{References}
 \phantomsection

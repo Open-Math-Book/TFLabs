@@ -3,11 +3,31 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage{rotating}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{amsmath,amssymb,amsthm,amscd,mathtools}
 \usepackage{color}
+\usepackage{enumitem}
 \usepackage{ulem}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\tikzset{dot/.style={draw,shape=circle,fill=black,scale=.2}}
+\usepackage{geometry}
+\usepackage[pdftex]{hyperref}  %It has been claimed that hyperref should be loaded last...
+\hypersetup{ %
+  colorlinks=true, %
+  linkcolor=red,%  %% links within the doc e.g. ToC entries
+  urlcolor=blue,%  %% links to the interwebs
+  plainpages=false, %
+  pdftitle={Tech Fluency Labs for Math and Science Students, Version 0.1}, %
+  pdfauthor={Len Brin, Joe Fields, Younhee Lee and Ray Mugno}, %
+  pdfsubject={Computational tools for mathematics} %
+}
+\pdfcompresslevel=9
+
+\makeatletter
+\newcommand{\newreptheorem}[2]{\newtheorem*{rep@#1}{\rep@title}\newenvironment{rep#1}[1]{\def\rep@title{#2 \ref{##1}}\begin{rep@#1}}{\end{rep@#1}}}
+\makeatother
+
 
 
 \newcommand{\sageprompt}{ {\tt sage$>$} }
@@ -64,3 +84,9 @@
 \par \rule{0pt}{6pt} \par \noindent }{\clearpage}
 
 \newenvironment{codeblock}{ \par \rule{0pt}{12pt} \par \hfill \begin{minipage}{0.9\textwidth} }{ \end{minipage} \par \rule{0pt}{12pt} \par }
+
+\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\arraystretch}{.83}
+
+\graphicspath{{../figures}{figures}}
+
