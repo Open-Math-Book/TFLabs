@@ -9,7 +9,7 @@ tflabs.aux: *.tex */*.tex
 	bibtex tflabs
 	pdflatex tflabs
 clean::
-	rm *.aux *~ *.bak *.log *.pdf *.out *.bbl *.blg *.idx *.ilg *.ind *.lof *.lot *.toc
-	rm */*.aux */*~ */*.bak */*.log */*.pdf */*.synctex.gz
+	rm -f *.aux *~ *.bak *.log *.pdf *.out *.bbl *.blg *.idx *.ilg *.ind *.lof *.lot *.toc
+	rm -f */*.aux */*~ */*.bak */*.log */*.out */*.pdf */*.synctex.gz
 labs2www::
 	cp */lab*_.pdf docs/labs/

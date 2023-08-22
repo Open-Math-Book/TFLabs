@@ -1,4 +1,5 @@
 **.aux
+**.bbl
 **.blg
 **.dvi
 **.idx
@@ -15,3 +16,4 @@
 **.fig.bak
 **.eps
 .DS_Store
+*/*.pdf
