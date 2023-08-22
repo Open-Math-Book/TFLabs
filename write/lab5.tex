@@ -1,0 +1,60 @@
+\begin{enumerate}
+	\item To do this lab, you'll need a free Google account.  If you don't have one and are unwilling to sign up for one, your instructor may be able to provide you with login credentials for a dummy account.
+	\item Verify that you are signed in to your Google account (for instance check if you can see your ``Gmail'' email.)
+	\item Point your browser to \url{sites.google.com} and start a new, blank, site. 
+  \item On the right-hand side of the screen there is a menu system containing a variety of elements you can add to your site.  Select the one that says ``Embed.''  In the dialog that pops up, switch it over to ``embed code'' and paste the following into the text box:
+\begin{codeblock}
+\begin{verbatim}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MathJax Example</title>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+<H2> Testing MathJax </h2>
+<p>
+If we are given a quadratic polynomial \(Ax^2+Bx+C\), we can find its zeros 
+using the quadratic formula, a relatively simple expression in terms of the 
+coefficients \(A\), \(B\) and \(C\) which gives the \(x\) values that satisfy 
+\(Ax^2+Bx+C = 0\).
+<p>
+The formula is
+\[ \frac{-B \pm \sqrt{B^2 - 4AC}}{2A}. \]
+</body>
+</html>
+\end{verbatim}
+\end{codeblock}
+
+\item If you want to make changes to your embedded element, click somewhere in it (to select it) and notice the icons that appear in the upper-left corner.  Select the pencil to edit.  Also, the text area that contains your code is very tiny, but it has a resizing handle in the bottom right corner.
+
+\item Turn your attention to the tool area at the top of the window towards the right.  The first three icons there are ``undo,'' ``redo,'' and ``preview.''  It's probably obvious that undo and redo are useful!  The preview button is pretty cool too, it let's you see how your site will appear on a regular computer, or on a tablet or cellphone.  The blue X leaves preview mode.
+
+\item We've basically just hijacked Google sites to create a sandbox for playing around with \LaTeX{} math!  A lot of people prefer to use the \$\dots\$ notation for math.  You can enable that by adding the following magic spell to your preamble:
+\begin{codeblock}
+\begin{verbatim}
+  <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+  </script>
+\end{verbatim}
+\end{codeblock}
+\item Try the following.  Count on your fingers but doubling with each step instead of adding 1 with each step. 
+\begin{enumerate}
+  \item 2
+  \item 4
+  \item 8
+  \item 16
+\end{enumerate}
+{\it et cetera}
+
+Of course, repeated multiplication is the same thing as exponentiation, so if you made it through all ten of your fingers, you should know the value of $2^{10}$.  You could also work backwards (cutting in half with each step) to figure out the value of $2^0$.  Or you could enlist a friend and work out what $2^{20}$ is.
+
+Create a little webpage - using MathJax for the math - explaining all this for someone who's in, say, Middle School (maybe 6th or 7th grade).  See if you can use the intuition from this physical activity to explain that weird rule about powers: $a^b \cdot a^c = a^{b+c}$.
+\end{enumerate}

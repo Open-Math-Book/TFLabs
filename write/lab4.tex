@@ -1,0 +1,56 @@
+\begin{enumerate}
+	\item Go to Overleaf and, instead of a blank project, under New Project select ``Example Project.''
+
+  \item Take a little time to go through the source code line-by-line and figure out what things do.
+
+  \item Try the following matching exercise.
+
+ \hspace{-.75in} \begin{tabular}{lcl} 
+ & \rule{48pt}{0pt} & \\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb+\href{https://www.overleaf.com/learn}{help library}+ \end{small} & & A. Set the author field \\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb+\author{You}+ \end{small} & & B. A hyperlink\\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb+\includegraphics[width=0.25\linewidth]{frog.jpg}+ \end{small} & & C. Start a numbered list\\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb+\url{https://www.overleaf.com/contact}+  \end{small} & & D. Some displayed math\\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb+\usepackage[english]{babel}+ \end{small} & & E. Puts in an image\\
+\rule[-18pt]{0pt}{48pt} \begin{small}\verb-\begin{enumerate}- \end{small} & & F. Sets the document language\\
+\rule[0pt]{0pt}{30pt}   \begin{small}\verb-\[S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}- \end{small} & & G. An alternative form\\
+\rule[-18pt]{0pt}{30pt} \begin{small}\verb+    = \frac{1}{n}\sum_{i}^{n} X_i\]+ \end{small} & & \hspace{.2in} of a hyperlink\\
+\end{tabular}
+
+\clearpage
+
+\item You may have notice the use of \verb+\[+ and \verb+\]+ to begin and end the display math environment.  Using \verb+$$+ to begin and end a displayed math environment (or \verb+$+ to begin and end an inline math environment) has an unfortunate consequence.  Users have a tendency to forget either the begin or the end tag which leads to errors at compile time that are really hard to figure out.  If you get compilation errors that seem plain crazy, check to see if every `begin math' token has a matching `end math' token.  The problem is a little easier to deal with when the begin and end tags are different.
+
+The begin/end version of the tags for displayed math are \verb+\[+ and \verb+\]+.
+
+The begin/end version of the tags for inline math are \verb+\(+ and \verb+\)+.
+
+So, either use these -- or take my advice and learn to scan your code for mismatched dollar signs!
+
+\centerline{\rule{2in}{.5pt}}
+
+Next we're going to explore more of the features of the Overleaf interface.  The panel to the left of the `Edit' panel contains two subparts, above is a file listing.  The current project has 3 files in it.  The sub-panel below shows the logical structure of the document - you can click on things to move to the spot in the source code where they are defined.  The panel that runs along the top of the page contains the Overleaf menu and the Home button on the left and towards the right we see Review, Share, Submit, History and Chat.  Let's start with Share.
+
+\centerline{\rule{2in}{.5pt}}
+
+\item Find a partner, one of you create a new project (use the Example Project template again) then share it with the other.  If you both go to the Home area in your respective instances of Overleaf, you should each be able to see the project.  You should be able to edit the project simultaneously!  
+\item One of you should adjust the \verb+\author{}+ command so that it contains both your names.  The other should add a comment to the file, maybe ``I think my name should be first.''  To add a comment, click the Review button which opens a new panel between the source and the pdf panels -- highlight some text in the edit panel and you'll be prompted for your comment.
+\item The Overleaf interface contains elements for resizing and hiding the various panels.  Play around with customizing the interface.  (For instance I often work with only the Edit and Review panels open - then I just need to unhide the Pdf panel when it's time to recompile and see how my changes look.)
+\item When working collaboratively, but not physically near one another, the Chat panel can be quite useful.  Send each other a chat!
+\item One last thing.  Did you notice how the size of the little frog image was specified?  You can also use an actual length, but the strategy used here (making the image's width be a percentage of the width of a line) is smart.  Other possibilities are to give a scale factor:
+
+\begin{codeblock}
+\begin{verbatim}
+\begin{figure}
+\centering
+\includegraphics[scale=.25]{frog.jpg}
+\caption{\label{fig:frog}This frog was uploaded via the file-tree menu.}
+\end{figure}
+\end{verbatim}
+\end{codeblock}
+
+Make that change and recompile.
+
+\item You should notice that the frog picture is somewhat bigger, and also that it appears in a different place!  That's because things like tables and figures are known as ``floats.''  The typesetter (in this case the \LaTeX{} software) has considerable latitude about where they end up in the layout.  Because it's possible that a table or figure ends up far from where it's referred to in the text, these ``floats'' are usually numbered.  As you work and revise a document, it's quite possible for new diagrams and tables to move things about and change those numbers.  Look for the commands \verb+\ref{}+ and \verb+\label{}+ in the source code to see how \LaTeX{} can automatically keep these number references current (with a little help from the author).
+
+\end{enumerate}
