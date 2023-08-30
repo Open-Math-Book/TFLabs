@@ -7,13 +7,13 @@ Try the following operations:
 
 \begin{enumerate}
 
-	\item Try the following operations:
-	\begin{enumerate}
-		\item \verb% 1 + 2 + 3 %
-		\item \verb% 42 - 23 %
-		\item \verb% 1331 * 11 %
-		\item \verb% 144 / 9 %
-    \end{enumerate}
+\item Try the following operations:
+\begin{enumerate}
+	\item \verb% 1 + 2 + 3 %
+	\item \verb% 42 - 23 %
+	\item \verb% 1331 * 11 %
+	\item \verb% 144 / 9 %
+\end{enumerate}
 
     \item That's pretty standard stuff, you could more easily do those on your phone\dots  But, can your phone calculate 200 digits of $\pi$ in the blink of an eye?  Try this:
 
@@ -73,7 +73,15 @@ The error message you get when evaluating this should look like:
 
 \includegraphics[scale=.5]{sage_cell-error.png}
 
-To be fair, Sage usually puts out error messages that are on the cryptic side.  But not this time!  The message says ``NameError'' and it's even highlighted the thing that's wrong. \footnote{A takeaway from this is that you can't rely on implicit multiplication.  If you write \verb+7x+ the system is going to think you've created a new (computer) variable whose name is ``7x.''  What you really {\em meant} was \verb+7*x+ and that's what you have to actually type!} 
+To be fair, Sage usually puts out error messages that are on the cryptic 
+side.  But not this time!  The message says ``NameError'' and it's even 
+highlighted the thing that's wrong. 
+
+%\footnote{A takeaway from this is that 
+%you can't rely on implicit multiplication.  If you write \verb+7x+ the 
+%system is going to think you've created a new (computer) variable whose 
+%name is ``7x.''  What you really {\em meant} was \verb+7*x+ and that's 
+%what you have to actually type! } 
 
 If you fix the error, something else a little unexpected happens. Nothing!  There's no output\dots
 
@@ -97,9 +105,4 @@ y=mx+b ; y
 		result. What is the pattern?
 	
 \end{enumerate}
-
-m=2; b=1;
-y=mx+b
-
-
 
