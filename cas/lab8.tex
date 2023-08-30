@@ -1,0 +1,147 @@
+
+Most of the computations we did in the previous section can be
+done on a regular calculator, but where a CAS like Sage really
+shines is when working with algebraic expressions including
+variables. When working with Sage, we will need to declare
+symbolic variables before we use them.
+
+\begin{verbatim}
+x = var('x')
+\end{verbatim}
+
+This tells Sage that we will be using the symbol/letter ``x'' as an
+unbound variable in an expression. We wish to treat it as symbol
+that can represent any possible value and not as a specific
+value that is fixed.  In other words, $x$ is a mathematical variable, not a computer variable.
+
+\begin{verbatim}
+x = var('x')
+3*x+7*x+5
+\end{verbatim}
+
+This represents the expression $3x+7x+5$. Note that the implied
+multiplication between $3$ and $x$ needs to be specified when
+typing into Sage.
+
+Inputting
+
+\begin{verbatim}
+var('x')
+3x
+\end{verbatim}
+
+\noindent will just cause a NameError.
+
+Sage can be helpful when working with algebraic expressions, as
+it can do things like expand, factor, or simplify expressions.
+
+If we want to factor an expression like $x^2+4x+3$, we can use
+the  {\tt factor} command.
+
+\begin{verbatim}
+x=var('x')
+factor(x^2+4*x+3)
+\end{verbatim}
+
+We can also expand out an expression using the {\tt expand} command.
+
+\begin{verbatim}
+x=var('x')
+expand( (x+1)*(x+3) )
+\end{verbatim}
+
+It is also often useful to define a function, such as $f(x)$, much like
+we do in a regular math class.
+
+\begin{verbatim}
+x=var('x')
+f(x)=x^2+4*x+3
+\end{verbatim}
+
+We can then evaluate $f(x)$ at different values of $x$ using the standard
+notation. For example, to evaluate at $x=1$, we can then enter
+
+\begin{verbatim}
+f(1)
+\end{verbatim}
+
+which will give us the output of
+
+\begin{verbatim}
+8
+\end{verbatim}
+
+which is the same as the value of $(1)^2+4(1)+3$, i.e. the value of
+substituting $x=1$ into $f(x)=x^2+4x+3$.
+
+We can also easily apply the {\tt expand} and {\tt factor}
+commands to a function we have already defined.
+
+\begin{verbatim}
+f.factor()
+\end{verbatim}
+
+will give the output
+
+\begin{verbatim}
+x |--> (x+3)*(x+1)
+\end{verbatim}
+
+which is the same factorization as when we typed
+
+\begin{verbatim}
+factor(x^2+4*x+3)
+\end{verbatim}
+
+Similarly,
+
+\begin{verbatim}
+f.expand()
+\end{verbatim}
+
+can be used to {\tt expand} the function $f(x)$. In addition,
+a function has the {\tt full\_simplify} option.
+
+\begin{verbatim}
+var('x')
+f(x)=(x^2+4*x+3)/x+(x+3)*(x-1)/(x+1)
+f.full_simplify()
+\end{verbatim}
+
+Will simplify the very complicated expression of
+\begin{equation*}
+	\frac{x^2+4x+3}{x} + \frac{(x+3)(x-1)}{x+1}
+\end{equation*}
+into a single rational function.
+
+Finally, sometimes Sage will give us an exact expression for
+something for which we would like a decimal approximation.
+For example, 
+
+\begin{verbatim}
+var('x')
+f(x)=(x^2+4*x+3)/x+(x+3)*(x-1)/(x+1)
+f(2)
+\end{verbatim}
+
+gives the output
+
+\begin{verbatim}
+55/6
+\end{verbatim}
+
+Because Sage is mathematical software, and mathematicians usually
+want exact answers, that is what it will return, when possible. In order
+to force it to give a decimal expression, we can use the
+{\tt n()} command.
+
+\begin{verbatim}
+n(55/6)
+\end{verbatim}
+
+gives the decimal approximation of
+
+\begin{verbatim}
+9.16666666666667
+\end{verbatim}
+
