@@ -205,8 +205,12 @@ But, if you really want fine-grained control there are commands for adding verti
 \begin{verbatim}
 Hickory dickory dock \hspace{1in} The mouse went up the clock.
 
-\vspace{.5in}
+      % There should be blank lines surrounding the space command              
+      % Cutting and pasting might leave them out, so add them
+      % back in if they're missing.
 
+\vspace{.5in}
+                
 The clock struck one. The mouse went down. Hickory dickory dock
 \end{verbatim}
 \end{codeblock}
