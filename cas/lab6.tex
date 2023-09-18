@@ -83,7 +83,14 @@ highlighted the thing that's wrong.
 %name is ``7x.''  What you really {\em meant} was \verb+7*x+ and that's 
 %what you have to actually type! } 
 
-If you fix the error, something else a little unexpected happens. Nothing!  There's no output\dots
+If you fix the error\footnote{A takeaway from this is that %
+you can't rely on implicit multiplication.
+If you write {\tt 7x} the 
+system is going to think you've created a new (computer) variable whose 
+name is ``7x.''}  
+%What you really {\em meant} was {\tt 7\{*}x} and that's %
+%what you have to actually type!  
+something else a little unexpected happens. Nothing!  There's no output\dots
 
 This is just because the last line is an assignment -- it has no return value.  A very common ``idiom'' you'll see when looking at other people's sage code looks like this:
 
@@ -91,7 +98,7 @@ This is just because the last line is an assignment -- it has no return value.  
 \begin{verbatim}
 y=var('y')
 m = 2 ; b = 1
-y=mx+b ; y
+y=m*x+b ; y
 \end{verbatim}
 \end{codeblock}
 
@@ -99,10 +106,28 @@ y=mx+b ; y
 
 
 
-	\item Calculate $2^0$, $2^0+2^1$, $2^0+2^1+2^2$, 
+	
+	
+	\item Sage has a function called \verb+sum()+ that adds things up. Next time we'll learn how use the help facility to find out how to use a Sage command, but for now, we're just going to tell you:  the \verb+sum()+ function takes four arguments.  The first argument is a formula for the terms of the sum, the second argument is the so-called summation variable, the last two arguments tell where the sum starts and ends. 
+
+	For example
+
+	\begin{codeblock}
+\begin{verbatim}
+k=var('k')
+sum(2*k+1, k, 0, 5)
+\end{verbatim}
+\end{codeblock}
+
+\noindent would give us the sum of all the odd numbers from 1 to 11.
+
+What is the sum of all the odd numbers from 1 to 201?
+
+\item Use Sage to calculate $2^0$, $2^0+2^1$, $2^0+2^1+2^2$, 
 		and $2^0+2^1+2^2+2^3$. Continue adding the next
 		largest power of $2$ until you notice a pattern in the
 		result. What is the pattern?
-	
+
+
 \end{enumerate}
 
