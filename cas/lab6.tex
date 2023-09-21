@@ -112,7 +112,7 @@ y=m*x+b ; y
 
 	For example
 
-	\begin{codeblock}
+\begin{codeblock}
 \begin{verbatim}
 k=var('k')
 sum(2*k+1, k, 0, 5)
@@ -127,6 +127,15 @@ What is the sum of all the odd numbers from 1 to 201?
 		and $2^0+2^1+2^2+2^3$. Continue adding the next
 		largest power of $2$ until you notice a pattern in the
 		result. What is the pattern?
+
+\item The Sage summation facility can also do things entirely symbolically.  This is sort of like the difference between computing a particular value and giving a general formula.  Try the following in the Sage cell and see if you and Sage found the same pattern.
+
+\begin{codeblock}
+\begin{verbatim}
+k, n = var('k, n')
+sum(2^k, k, 0, n)
+\end{verbatim}
+\end{codeblock}
 
 
 \end{enumerate}
