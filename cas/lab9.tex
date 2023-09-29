@@ -1,0 +1,255 @@
+{\bf \Large Solving equations}
+
+(Note: follow along with these initial computations then try the problems.)
+
+We will investigate functions of the form $f(x)=ax^2+bx+c$. To begin
+with, we will consider when $a=1$, $b=0$, and $c=0$, i.e. $f(x)=x^2$.
+
+
+Start by defining $f(x)=x^2$ in Sage.
+
+\begin{verbatim}
+f(x)=x^2
+\end{verbatim}
+
+To solve the equation $f(x)=1$ (i.e. $x^2=1$) in Sage, we can use the
+\textbf{solve} command:
+
+\begin{verbatim}
+solve(f(x)==1, x)
+\end{verbatim}
+
+This will solve the equation $f(x)=1$, solving for the variable $x$.
+Note that when solving, we need to put two equals signs to denote
+equality. This is because Sage will interpret a single equals sign
+as an assignment (i.e. we would be defining $f(x)$ to be the function
+that is always equal to $1$).
+
+The output we obtain is
+
+\begin{verbatim}
+[x == -1, x == 1]
+\end{verbatim}
+
+These are the two solutions that we expect of $x=-1$ and $x=1$.
+
+\subsection{Practice Exercises}
+
+\begin{enumerate}
+	\item Try to solve the equation $f(x)=4$ using Sage.
+	\item Solve the equation $f(x)=3$ using Sage.
+	\item Solve the equation $f(x)=0$ using Sage.
+	\item Do you expect for there to be any solutions for $f(x)=-9$?
+		Try it in Sage and see what happens.
+	\item For what values of $h$ does $f(x)=h$ have two real solutions?
+		Only 1 solution? Two imaginary solutions?
+	\item Define a new function $g(x) = x^2 + 10x + 21$.  Let's try two things:
+	\begin{enumerate}
+		\item Use the \verb+factor()+ member function to see how $g(x)$ factors.
+		\item Use the \verb+solve()+ command to see when $g(x)$ is equal to zero.
+	\end{enumerate}
+	Can you explain the minus signs?
+
+	\item Do the things \verb+factor()+ and \verb+solve()+ in the previous problem for 
+	\begin{enumerate}
+		\item $g(x) = x^2 + 10x + 22$
+		\item $g(x) = x^2 + 10x + 23$
+		\item $g(x) = x^2 + 10x + 24$
+		\item $g(x) = x^2 + 10x + 25$
+		\item $g(x) = x^2 + 10x + 26$
+	\end{enumerate}
+
+    Sometimes Sage factors the polynomial into linear factors. \newline
+    Sometimes Sage is refusing to factor because the zeros are not nice numbers.\newline
+    Once, Sage refuses to factor because things have gotten truly weird.
+
+    Identify which is which?  What do you suppose \verb+I - 5+ means?
+
+\end{enumerate}
+
+{\bf \Large Graphing functions}
+
+(Again, follow along with the first few computations, then try the problems.)
+
+Another useful way to analyze things is by visualizing functions using plots of their graphs. Let's begin by plotting the function $f(x)=x^2$:
+
+\begin{verbatim}
+f(x)=x^2
+plot(f(x))
+\end{verbatim}
+
+The first line defines the function $f(x)=x^2$, then the second line will plot
+the function. Note that since we did not specify the range for the axes, the
+plot will automatically pick a range. If we want to see more of the graph, we
+can try adjusting the \textbf{xmin}, \textbf{xmax}, \textbf{ymin}, and \textbf{ymax}
+values, which correspond to the minimum and maximum values of the
+$x$- and $y$- axes that we desire. For example, changing the plot
+command to
+
+\begin{verbatim}
+plot(f(x),xmin=-3,xmax=3,ymin=-2,ymax=9)
+\end{verbatim}
+
+will gives us an $x$-axis that ranges from $-3$ to $3$ and a $y$-axis that
+ranges from $-2$ to $9$.
+
+We can also plot multiple functions on the same plot, in case we
+want to compare them together. Let's try overlaying the graph of
+the function $g(x)=1$ onto the same set of axes:
+
+\begin{verbatim}
+f(x)=x^2
+g(x)=1
+plot([f(x), g(x)],xmin=-3,xmax=3,ymin=-2,ymax=9)
+\end{verbatim}
+
+We have defined two functions now, $f(x)=x^2$ and $g(x)=1$. To
+plot both, we put them both into a list that is enclosed in square
+brackets, with the two functions separated by a comma. This produces
+graphs of both $f(x)$ and $g(x)$, in two different colors.
+
+How many times do the graphs of $f(x)$ and $g(x)$ intersect?
+
+\subsection{Practice Exercises}
+
+\begin{enumerate}
+	\item Graph the functions $f(x)=x^2$ and $g(x)=4$ together
+		on the same set of axes. How many times do the
+		graphs of $f(x)$ and $g(x)$ intersect?
+	\item Repeat with $f(x)=x^2$ and $g(x)=3$. How many times do the
+		graphs of $f(x)$ and $g(x)$ intersect?
+	\item Repeat with $f(x)=x^2$ and $g(x)=0$. How many times do the
+		graphs of $f(x)$ and $g(x)$ intersect?
+	\item Repeat with $f(x)=x^2$ and $g(x)=-3$. How many times do the
+		graphs of $f(x)$ and $g(x)$ intersect?
+	\item What is the relationship between the number of times
+		that the graphs of $f(x)=x^2$ and $g(x)=k$ intersect and the
+		number of solutions to $x^2=k$?
+	\item Are there any intersections of the graphs $f(x) = x^2 + 1$ and $g(x) = x+2$ ? \newline
+	Use a sage \verb+plot()+ command to visualize the situation, then use the \verb+solve()+ command to find the points of intersection. 
+	\item Notice that in the last problem the \verb+solve()+ command only gives us the $x$ coordinates of the points of intersection.  How can we find the $y$ coordinates?
+    \item Recall that the quadratic formula is 
+
+    \[  \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}. \]
+
+    What are the $a$, $b$ and $c$ in this case?  Careful! You need to rearrange so that you have a quadratic polynomial set equal to zero.
+
+    Does the answer from using Sage's \verb+solve()+ command agree with what the quadratic formula tells us?
+\end{enumerate}
+
+{\bf \Large Numerical Approximations to Solutions of Equations}
+
+(There are no problems in this section, so just read along and do the computations as you encounter them.)
+
+Some equations are difficult to solve exactly even with the
+assistant of a computer and computer software, and Sage is no
+exception to this. 
+
+Use the \textbf{solve} function to have Sage solve the
+equation $x^5-3x^4+x^3+2=0$. 
+
+The output that we get is
+\begin{verbatim}
+[0 == x^5 - 3*x^4 + x^3 + 2]
+\end{verbatim}
+
+which is another way of Sage telling us that it could not find a solution.
+However, plotting the function $x^5-3x^4+x^3+2$ tells us another story.
+Plot the graph of $x^5-3x^4+x^3+2$ in Sage to see whether it has
+any roots. How many are there, and what are the approximate values
+from the graph? You may want to play around with the range of the
+$x$-axis (using xmin and xmax) to get a clearer picture.
+
+(3 roots, roughly -0.8, 1.2, and 2.5)
+
+We see that there are 3 roots, at roughly $x=-0.8$, $1.2$, and $2.5$.
+Although Sage cannot get the exact values for them by solving
+the equation $x^5-3x^4+x^3+2=0$, it can get approximate decimal
+values for the roots by using the \textbf{find\_root} function. In
+short, a computer algebra system such as Sage uses a sophisticated
+version of "find where the graph crosses the $x$-axis, and zoom in
+repeatedly around that point to get a more precise estimate of the
+$x$-coordinate of where the graph crosses the $x$-axis.'' To find
+a root $x$ where $-2<x<0$, we would use the command
+
+\begin{verbatim}
+find_root(x^5-3*x^4+x^3+2==0, -2, 0)
+\end{verbatim}
+
+The output of this is the root
+
+\begin{verbatim}
+-0.7931397744702121
+\end{verbatim}
+
+If we want to find a different root, we can change the interval on
+which we instruct Sage to look for a root. For example, if we want
+to find the root near $1.2$, we could try something like
+
+\begin{verbatim}
+find_root(x^5-3*x^4+x^3+2==0, 1, 2)
+\end{verbatim}
+
+which gives us the value
+
+\begin{verbatim}
+1.199258801379252
+\end{verbatim}
+
+Try to find the approximate value of the root of $x^5-3x^4+x^3+2$
+near $x=2.5$.
+
+(value is 2.563623765649018)
+
+Note that we said that these values are approximate. Let's verify
+what we mean by that. Recall that a root of a function $f(x)$ is
+a value of $x$ that makes $f(x)$ equal to exactly $0$, i.e.
+$f(x)=0$. Use Sage to define the function $f(x)=x^5-3x^4+x^3+2$,
+then plug in the values of the approximate roots from above,
+e.g. find $f(-0.7931397744702121)$. If $-0.7931397744702121$
+is truly a solution to $x^5-3x^4+x^3+2=0$, then
+$f(-0.7931397744702121)$ should equal exactly 0.
+
+However, the value that we get from Sage is
+
+\begin{verbatim}
+1.35419453428653e-13
+\end{verbatim}
+
+The $e$ here is used for \underline{e}ngineering notation,
+where 1.35419453428653e-13 means
+\begin{equation*}
+1.35419453428653\times 10^{-13}
+\end{equation*}
+
+In other words, the part before the ``e'' is a decimal number,
+but then the part after the ``e'' is the exponent that we should
+raise $10$ to then multiply the decimal. Another way to think of
+this is that the ``e-13'' means we should start with the
+1.35419453428653 then move the decimal to the left 13 times,
+making our number smaller. In contrast, if we had seen
+
+\begin{verbatim}1.35419453428653e5\end{verbatim}
+
+that would mean move the decimal to the right 5 places, resulting
+in the number $135419.453428653$.
+
+The number $1.35419453428653\times 10^{-13}$ is a really
+small number, but it's not exactly equal to 0. This 
+demonstrates that the decimal ``solution'' we obtained using
+\textbf{find\_root} is only approximate and not an exact solution.
+
+Another thing to be cautious about when using \textbf{find\_root}
+is that it will quit as soon as it finds one approximate root. In other
+words, even if there is another root in the interval that you specify,
+\textbf{find\_root} will only tell you the value of one of them. If we
+try
+
+\begin{verbatim}
+find_root(x^5-3*x^4+x^3+2==0, 1, 3)
+\end{verbatim}
+
+in hopes of finding both roots that are between 1 and 3, it will not
+give us both. Try this out and see what you get!
+
+(only the solution 2.563623765649033 is found)

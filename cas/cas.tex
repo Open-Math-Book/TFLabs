@@ -30,7 +30,7 @@ arithmetic operations.
 
 
 
-\section{Sage on CoCalc}
+\section{Sage on CoCalc -- the interface}
 
 For more advanced calculations that require multiple
 steps, it will be beneficial to signup for CoCalc. CoCalc is a cloud-based service\footnote{``In the cloud'' really just means ``on somebody else's computer.''  There are a ton of servers out there that can be rented on flexible terms, CoCalc just purchases computing power as needed\dots} that gives its users access to many software packages.  Originally it was Sage only, but now, in addition to Sage,  one can run Python notebooks, \LaTeX{} documents, get a full Linux terminal, run a so-called ``computational whiteboard,'' even manage a course on CoCalc.  The CoCalc interface allows for sharing projects and working on thing collaboratively with one's partners -- edits become visible to the other party in real time.
@@ -46,257 +46,57 @@ This lab will lead you through the process of obtaining a CoCalc account and get
 \end{worksheet}
 \clearpage
 
+\section{Sage on CoCalc II -- Algebra}
 
-Before we start the next lab, some hints about how the interface in CoCalc works are in order.
+The last lab mostly concentrated on getting you used to the interface. Of course, learning that interface would be pointless if Sage wasn't capable of doing something useful for us!
 
-The interface is called a sage notebook. A notebook consists of an alternating sequence of input and output cells. There's a thin line between an input cell and the corresponding output cell, and the output cells have a big green border on the left side. Both sorts of cells can be shown or hidden using the little triangles in the left margin. 
+And it {\em definitely} can!
 
-If you hover your mouse over the line after an output cell it will turn blue. If you then click it you'll get a new cell. It's usually a good idea to break tough computations up into manageable chunks. That's what cells are for. Just be aware that the cells in a notebook aren't independent -- if you set a variable to some value in one cell, the cells below it will know about that.
+The next lab has us exploring Sage's abilities in Algebra.  Recall the operations with polynomials that you learned to do by hand in Algebra class:
 
-Let me point out a couple of quirky things:
+\begin{itemize}
+	\item Multiplying 2 polynomials (do you recall the FOIL mnemonic?)
+	\item Factoring a polynomial (sort of the opposite of the previous thing)
+	\item Evaluating a polynomial at a particular value of its variable.
+	\item Solving -- what $x$ values give a particular output?
+\end{itemize}
 
+Not to say that that was wasted effort (if nothing else, your brains got stronger from the exercise!)
+but, yeah, Sage can do all of that and more\dots
+
+Before we jump into the actual lab, a quick word about ``equals.''
+
+There's really just one version of the ``equality'' idea in Mathematics.  In Computing, there are two:
 \begin{enumerate}
-	\item The instructions in a cell need to be executed in order to have any effect. It's not enough to put your cursor in the cell and push "Enter" (that just adds a linebreak, making the cell longer). You have to hold the "Shift" key while pressing "Enter" if you're trying to tell the computer to "Do it!"  (You can also select the cell and click the ``Run'' button in the toolbar, but you'll soon find that Shift$+$Enter is a lot quicker.)
-	\item The second quirky thing is that assigning a value to a variable doesn't create any output. So if you want to have the computer verify that it really did what you just told it to do (i.e. print some output) you need to write the variable a second time.  This often has the form of some long computation followed by a semicolon and the name of a variable.
+	\item One place an equals sign shows up is when we're assigning a value to a variable.
+	\item The other place an equals sign shows up is when we're checking whether to variables actually contain the same content.
 \end{enumerate}
+
+In Sage (and Python) the ``assignment'' version uses a single ``$=$'' -- the ``equality testing'' sense use a double ``$==$.''  
+
+If you were to execute 
 
 \begin{codeblock}
 \begin{verbatim}
-A, P, r, n, t = var('A, P, r, n, t')
-P=1000
-r=.06
-n=12
-t=5
-A = P * (1 + r/n)^(t*n) ; A
+x=1
+x==0
 \end{verbatim}
 \end{codeblock}
 
-\clearpage
-\begin{worksheet}{7}{Sage on CoCalc}{sage.png}
-\input{cas/lab7}
+\noindent in a Sage cell, the first line (being an assignment) will produce no output, and the second line will produce output informing us that {\em no} - one and zero are not the same.
+
+
+\begin{worksheet}{8}{Sage on CoCalc II -- Algebra}{sage.png}
+\input{cas/lab8}
 \end{worksheet}
 \clearpage
 
-\section{Solving equations}
+\begin{worksheet}{9}{Finding Solutions in Sage}{sage.png}
+\input{cas/lab9}
+\end{worksheet}
+\clearpage
 
-We will investigate functions of the form $f(x)=ax^2+bx+c$. To begin
-with, we will consider when $a=1$, $b=0$, and $c=0$, i.e. $f(x)=x^2$.
 
-Start by defining $f(x)=x^2$ in Sage.
-
-\begin{verbatim}
-var('x')
-f(x)=x^2
-\end{verbatim}
-
-To solve the equation $f(x)=1$ (i.e. $x^2=1$) in Sage, we can use the
-\textbf{solve} command:
-
-\begin{verbatim}
-solve(f(x)==1, x)
-\end{verbatim}
-
-This will solve the equation $f(x)=1$, solving for the variable $x$.
-Note that when solving, we need to put two equals signs to denote
-equality. This is because Sage will interpret a single equals sign
-as an assignment (i.e. we would be defining $f(x)$ to be the function
-that is always equal to $1$).
-
-The output we obtain is
-
-\begin{verbatim}
-[x == -1, x == 1]
-\end{verbatim}
-
-These are the two solutions that we expect of $x=-1$ and $x=1$.
-
-\subsection{Practice Exercises}
-
-\begin{enumerate}
-	\item Try to solve the equation $f(x)=4$ using Sage.
-	\item Solve the equation $f(x)=3$ using Sage.
-	\item Solve the equation $f(x)=0$ using Sage.
-	\item Do you expect for there to be any solutions for $f(x)=-9$?
-		Try it in Sage and see what happens.
-	\item For what values of $h$ does $f(x)=h$ have two real solutions?
-		Only 1 solution? Two imaginary solutions?
-\end{enumerate}
-
-\section{Graphing functions}
-
-Another useful way to visualize functions is by plotting the graph of
-functions. Let's begin by plotting the function $f(x)=x^2$:
-
-\begin{verbatim}
-var('x')
-f(x)=x^2
-plot(f(x))
-\end{verbatim}
-
-The first two lines define the function $f(x)=x^2$, then the third line will plot
-the function. Note that since we did not specify the range for the axes, the
-plot will automatically pick a range. If we want to see more of the graph, we
-can try adjusting the \textbf{xmin}, \textbf{xmax}, \textbf{ymin}, and \textbf{ymax}
-values, which correspond to the minimum and maximum values of the
-$x$- and $y$- axes that we desire. For example, changing the plot
-command to
-
-\begin{verbatim}
-plot(f(x),xmin=-3,xmax=3,ymin=-2,ymax=9)
-\end{verbatim}
-
-will gives us an $x$-axis that ranges from $-3$ to $3$ and a $y$-axis that
-ranges from $-2$ to $9$.
-
-We can also plot multiple functions on the same plot, in case we
-want to compare them together. Let's try overlaying the graph of
-the function $g(x)=1$ onto the same set of axes:
-
-\begin{verbatim}
-var('x')
-f(x)=x^2
-g(x)=1
-plot([f(x), g(x)],xmin=-3,xmax=3,ymin=-2,ymax=9)
-\end{verbatim}
-
-We have defined two functions now, $f(x)=x^2$ and $g(x)=1$. To
-plot both, we put them both into a list that is enclosed in square
-brackets, with the two functions separated by a comma. This produces
-graphs of both $f(x)$ and $g(x)$, in two different colors.
-
-How many times do the graphs of $f(x)$ and $g(x)$ intersect?
-
-\subsection{Practice Exercises}
-
-\begin{enumerate}
-	\item Graph the functions $f(x)=x^2$ and $g(x)=4$ together
-		on the same set of axes. How many times do the
-		graphs of $f(x)$ and $g(x)$ intersect?
-	\item Repeat with $f(x)=x^2$ and $g(x)=3$. How many times do the
-		graphs of $f(x)$ and $g(x)$ intersect?
-	\item Repeat with $f(x)=x^2$ and $g(x)=0$. How many times do the
-		graphs of $f(x)$ and $g(x)$ intersect?
-	\item Repeat with $f(x)=x^2$ and $g(x)=-9$. How many times do the
-		graphs of $f(x)$ and $g(x)$ intersect?
-	\item What is the relationship between the number of times
-		that the graphs of $f(x)=x^2$ and $g(x)=k$ intersect and the
-		number of solutions to $x^2=k$?
-\end{enumerate}
-
-\section{Numerical Approximations to Solutions of Equations}
-
-Some equations are difficult to solve exactly even with the
-assistant of a computer and computer software, and Sage is no
-exception to this. 
-
-Use the \textbf{solve} function to have Sage solve the
-equation $x^5-3x^4+x^3+2=0$. 
-
-The output that we get is
-\begin{verbatim}
-[0 == x^5 - 3*x^4 + x^3 + 2]
-\end{verbatim}
-
-which is another way of Sage telling us that it could not find a solution.
-However, plotting the function $x^5-3x^4+x^3+2$ tells us another story.
-Plot the graph of $x^5-3x^4+x^3+2$ in Sage to see whether it has
-any roots. How many are there, and what are the approximate values
-from the graph? You may want to play around with the range of the
-$x$-axis (using xmin and xmax) to get a clearer picture.
-
-(3 roots, roughly -0.8, 1.2, and 2.5)
-
-We see that there are 3 roots, at roughly $x=-0.8$, $1.2$, and $2.5$.
-Although Sage cannot get the exact values for them by solving
-the equation $x^5-3x^4+x^3+2=0$, it can get approximate decimal
-values for the roots by using the \textbf{find\_root} function. In
-short, a computer algebra system such as Sage uses a sophisticated
-version of "find where the graph crosses the $x$-axis, and zoom in
-repeatedly around that point to get a more precise estimate of the
-$x$-coordinate of where the graph crosses the $x$-axis.'' To find
-a root $x$ where $-2<x<0$, we would use the command
-
-\begin{verbatim}
-find_root(x^5-3*x^4+x^3+2==0, -2, 0)
-\end{verbatim}
-
-The output of this is the root
-
-\begin{verbatim}
--0.7931397744702121
-\end{verbatim}
-
-If we want to find a different root, we can change the interval on
-which we instruct Sage to look for a root. For example, if we want
-to find the root near $1.2$, we could try something like
-
-\begin{verbatim}
-find_root(x^5-3*x^4+x^3+2==0, 1, 2)
-\end{verbatim}
-
-which gives us the value
-
-\begin{verbatim}
-1.199258801379252
-\end{verbatim}
-
-Try to find the approximate value of the root of $x^5-3x^4+x^3+2$
-near $x=2.5$.
-
-(value is 2.563623765649018)
-
-Note that we said that these values are approximate. Let's verify
-what we mean by that. Recall that a root of a function $f(x)$ is
-a value of $x$ that makes $f(x)$ equal to exactly $0$, i.e.
-$f(x)=0$. Use Sage to define the function $f(x)=x^5-3x^4+x^3+2$,
-then plug in the values of the approximate roots from above,
-e.g. find $f(-0.7931397744702121)$. If $-0.7931397744702121$
-is truly a solution to $x^5-3x^4+x^3+2=0$, then
-$f(-0.7931397744702121)$ should equal exactly 0.
-
-However, the value that we get from Sage is
-
-\begin{verbatim}
-1.35419453428653e-13
-\end{verbatim}
-
-The $e$ here is used for \underline{e}ngineering notation,
-where 1.35419453428653e-13 means
-\begin{equation*}
-1.35419453428653\times 10^{-13}
-\end{equation*}
-
-In other words, the part before the ``e'' is a decimal number,
-but then the part after the ``e'' is the exponent that we should
-raise $10$ to then multiply the decimal. Another way to think of
-this is that the ``e-13'' means we should start with the
-1.35419453428653 then move the decimal to the left 13 times,
-making our number smaller. In contrast, if we had seen
-
-\begin{verbatim}1.35419453428653e5\end{verbatim}
-
-that would mean move the decimal to the right 5 places, resulting
-in the number $135419.453428653$.
-
-The number $1.35419453428653\times 10^{-13}$ is a really
-small number, but it's not exactly equal to 0. This 
-demonstrates that the decimal ``solution'' we obtained using
-\textbf{find\_root} is only approximate and not an exact solution.
-
-Another thing to be cautious about when using \textbf{find\_root}
-is that it will quit as soon as it finds one approximate root. In other
-words, even if there is another root in the interval that you specify,
-\textbf{find\_root} will only tell you the value of one of them. If we
-try
-
-\begin{verbatim}
-find_root(x^5-3*x^4+x^3+2==0, 1, 3)
-\end{verbatim}
-
-in hopes of finding both roots that are between 1 and 3, it will not
-give us both. Try this out and see what you get!
-
-(only the solution 2.563623765649033 is found)
 
 \section{Iterating functions and chaos}
 
