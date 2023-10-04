@@ -69,7 +69,7 @@ Before we jump into the actual lab, a quick word about ``equals.''
 There's really just one version of the ``equality'' idea in Mathematics.  In Computing, there are two:
 \begin{enumerate}
 	\item One place an equals sign shows up is when we're assigning a value to a variable.
-	\item The other place an equals sign shows up is when we're checking whether to variables actually contain the same content.
+	\item The other place an equals sign shows up is when we're checking whether two variables actually contain the same content.
 \end{enumerate}
 
 In Sage (and Python) the ``assignment'' version uses a single ``$=$'' -- the ``equality testing'' sense use a double ``$==$.''  
@@ -96,15 +96,43 @@ x==0
 \end{worksheet}
 \clearpage
 
+Lab 10 is entirely on CoCalc.  A Sage worksheet file is available on the book website. 
+
+\section{Projects}
+
+The projects for this section will be individual.  Pick one of the following and be prepared to give a presentation on what you did.
+
+\subsection{Create an amazing graphic to use as the ``end of lab'' marker.}
+
+Do that.
+
+P.S. Just copying one of the examples and changing the colors will not be sufficient!
+
+\subsection{Pascal's triangle}
+
+In Lab 9, you may have noticed that the pattern of the coefficients of $(x+y)^n$ yielded a familiar thing known as Pascal's triangle.  Do some research and write a short paper (3-4 pages in Overleaf) about Pascal's triangle explaining how the triangle works to the rest of us.  Here's a few questions you may want to look for answers for:
+
+\begin{enumerate}
+	\item Who was Pascal and why did he create this triangle?
+	\item What is the recursive rule that gives a row of the triangle in terms of the one above it?
+	\item What is the sum of the entries in a row of Pascal's triangle?  Why?
+	\item Why are the entries sometimes called ``choice counters''?
+	\item The hockeystick theorem?
+	\item There's a cool pattern that arises if we color the entries in the triangle based on the remainder we get when dividing by some agreed upon number. ( I know that's not really a question.)
+\end{enumerate}
+
+\subsection{The quadratic formula}
+
+Take your pick.  Write a 3-4 page paper in Overleaf or create a Webpage on Google Sites (using jsmath for any mathematical notation) explaining what the quadratic formula is. Also, what it's for. And, how did they derive it?
+A bit of historical research would be reasonable -- when did humans first learn this magic?  Is there any debate about that?  How is the quadratic formula related to the process known as ``completing the square.''?  Use sage to compute some examples and also to generate some graphics to include in your paper/website.
 
 
-\section{Iterating functions and chaos}
+\subsection{Iterating functions and chaos}
 
-We now consider what happens when applying the function $g(x)=-rx^2+rx$
+Consider what happens when one applies the function $g(x)=-rx^2+rx$
 to a number repeatedly.
 
-We will start when $r=0.5$, so that $g(x)=-0.5x^2+0.5x$. We will start with
-the value $x=2$. What is the value of $g(2)$? $g(g(2))$? $g(g(g(2))$?
+We will start when $r=0.5$, so that $g(x)=-0.5x^2+0.5x$. Given that choice for $r$ we will use the initial value $x=2$. What is the value of $g(2)$? $g(g(2))$? $g(g(g(2))$?
 If we continue to apply $g$ more and more times to the result, what eventually
 happens to the output? Use Sage to make your calculations. You may want to
 apply \textbf{n()} to your output to get a decimal value to more easily
@@ -161,5 +189,4 @@ the values (approximately) repeat every 4 times that we apply $g$. To find
 the periodic points, we can solve for when $x=g(g(g(g(x))))$. Find the points
 in this periodic orbit by solving $x=g(g(g(g(x))))$ using Sage.
 
-(Solutions are $x=0, \frac{3}{7}, \frac{5}{7}, \frac{6}{7}$)
-
+Write up your findings in a 3-4 page \LaTeX paper on overleaf.
