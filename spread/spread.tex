@@ -15,6 +15,18 @@ Libr\'{e} Office have a .ods suffix.
 
 To load Libr\'{e} Office on your personal machine, visit \url{https://www.libreoffice.org/download/download-libreoffice/}
 
+In the next lab, you're going to need the formula for simple interest.  Interest is a slightly funny concept -- it comes from the idea that there is value in posessing some amount of money (you can invest it to make more money, or you can spend it in ways that are enjoyable\dots)  So, when one person loans money to another, the receiving party should pay them back ``a little bit extra'' to compensate them for the loss of the use of their funds.  That ``little bit extra'' is called interest.  The simplest possibility would be for interest to be just a uniformly fixed amount -- say \$10.  But that would be pretty unfair in some situations.  If I borrowed \$2 from a friend to buy a coffee, should I really pay them back \$12 the next day?  At the other end of the scale, if a business borrows \$1,000,000 from a bank, does it seem fair that they'd have to repay
+\$1,000,010 five years later?
+
+It seems pretty clear that interest should (at least) depend on two things:  the amount borrowed, and the duration of the loan.  In the simple interest formula, these things are typically called $P$ (the \underline{principal}) and $t$ (the \underline{time} -- usually measured in years).  The other element we'll need is called the \underline{rate}, which 
+is usually called $r$ and expressed as a percentage.  When $r$ (which must be agreed upon by the two parties) is given as a percentage, we must convert it to a decimal to use it in the formula (for example $6\%  = 0.06$) 
+
+With all that as prelude, the interest $I = Prt$ and the amount to be repaid is $A = P + I$, which can be re-expressed as 
+
+\[ A \; = \; P + Prt \; = \; P \cdot (1 + rt). \]
+
+\noindent This is known as the simple interest formula.
+
 \clearpage
 \begin{worksheet}{11}{Intro to Spreadsheets}{LibreCalc.png}
 \input{spread/lab11}
@@ -95,7 +107,7 @@ The pattern becomes easier to deduce if you remove all the powers of $x$ (and th
  	   & 3 & & 7 & & 11 & & 15 
  \end{tabular}
 
-SInce the differences don't exhibit an obvious pattern we continue on, obtaining
+Since the differences don't exhibit an obvious pattern we continue on, obtaining
 
 \begin{tabular}{ccccccccc}
 	2 &  & 5 & & 12 & & 23 & & 38 \\
@@ -105,35 +117,34 @@ SInce the differences don't exhibit an obvious pattern we continue on, obtaining
 
 It looks as though the bottom row -- which is known as the {\em second differences} is always 4.  Can you use that to predict what the next term in the sequence will be?
 
-\subsubsection{tasks}
-
-Write out the expanded form of $(x+1)^5$.
-
-Create a table of the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$.
-
-Revisit the grade spreadsheet from the previous section and insert a new row at the top.  Put the "weights" for homework, 
-quizzes and exams into cells in this row.  (As the teacher you might want to experiment with different 
-weighting schemes.) Are the final grades changed by much if we change the weights to 10, 
-20 and 70 percent respectively?
+\clearpage
+\begin{worksheet}{12}{More on Spreadsheets}{LibreCalc.png}
+\input{spread/lab12}
+\end{worksheet}
+\clearpage
 
 
-Use a spreadsheet to do a finite differences analysis of the following sequence:
-
-	  \[ 1 \quad 3 \quad 7 \quad 13 \quad 21 \ldots \]
-
-Find the "back diagonals" for the sequences of squares, cubes, 4th powers etc.
-(We care about back diagonals because you can use them to generate the entire sequence! (under the assumption that the bottom-most number is a constant) (sorry about all the parentheses)).
-
-Maybe:
-Given that the back diagonal for $x^n$ contains $s(n,k)*k!$ in the $k$th row, and the recursion for
-the Stirling numbers.  Use a spreadsheet to create a table of the Stirling numbers.
 
 \subsection{Builtin functions}
 
-Tasks:
 
-Returning to our gradebook example$\ldots$
+\clearpage
+\begin{worksheet}{13}{Spreadsheets: Built-in functions}{LibreCalc.png}
+\input{spread/lab13}
+\end{worksheet}
+\clearpage
 
-Use the MIN function to "drop the lowest quiz."
+\subsection{Project Ideas}
 
-Use functions to assign letter grades with $+$ and $-$ modifiers.
+{\bf Stocks}
+
+You can get historical data about stock prices from the Yahoo! Finance site.  Go to Yahoo! Finance and search for a company you might be interested in.  Click on the tab labelled historical data and then look for the download link.  The result will be stock price information for the previous year in a CSV file (comma seperated values).  CSVs are sort of the ``lowest common denomenator'' for spreadsheets -- they are readable by all spreadsheet applications.  Analyse the stock prices in an effort to decide if a given day day is a ``buy opportunity.''  (According to the famous adage we should ``buy low and sell high'' so we're looking for days where the price is reasonably low, but we expect it to go up!)  Be careful that you mark buy opportunities strictly on the basis of past information.  If you hope to get rich, but don't have a time machine, that's all you'll have to go on.
+
+{\bf Mortgages}
+
+There is a mathematical formula for mortgages and there are plenty of online calculators that one can use to determine the monthly payment on a particular house.  Nevertheless, let's see if we can use a spreadsheet to determine the monthly payment for a given loan.  Every month during the life of a mortgage, two competing things are happening:  a month's worth of interest is added to the balance, and the monthly payment is subtracted from the balance. The goal is to choose the monthly payment so that after 240 months (i.e. 20 years) the balance hits 0.
+
+{\bf Stirling numbers}
+
+You'll need to do some Googling for this one.  There are two kinds of Stirling numbers, which are given the names 
+``Stirling numbers of the first kind'' and ``Stirling numbers of the second kind.''  Both are computable because they satisfy recursions similar (but a bit more complicated) than the binomial coefficients.  Use a spreadsheet to create tables of both kinds of Stirling numbers.  Both of these sets of numbers numbers solve unusual counting problems, do some research and explain what they're for to us.
