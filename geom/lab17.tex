@@ -1,0 +1,89 @@
+
+
+\begin{enumerate}
+
+\item Find two numbers that have a sum of 26 and which differ by 8.
+
+\vfill
+
+\item Start GeoGebra, sign in, and put it in ``Graphing'' mode. In the input cells we're going to enter two formulas.  The first is $x+y=26$ and the second is $x-y=8$.
+Describe the shapes that are created in words.  What is the significance of the point $(17,9)$ in this picture?
+
+\vfill
+
+\item Consider the pair of linear equations
+
+\[ y = 3x+ 5 \quad \mbox{and} \quad y=-x+3 \]
+
+Graph both of them in the ``Graphing'' window, and find their point of intersection.  What is the significance of this point?
+
+\vfill
+
+\item Here are a couple of linear equations in standard form.
+
+ \[ 3x + 2y = 7 \quad \mbox{and} \quad x - 2y = 5 \]
+
+ Verify that you can get their graphs in GeoGebra without having to first put them in slope-intercept form.  (I.e. GeoGebra is perfectly happy dealing with lines that are in standard form.)  What values of $x$ and $y$ make both of these equations true simultaneously?
+
+ \vfill
+
+\item We've seen that when we graph a linear equation in two variables we get a line in the plane, and when we graph two such things we typically can find a point where they intersect - which is a simultaneous solution to the two equations.  What does this all look like if there are more than two variables?
+Switch to the ``3D Calculator'' mode and create a graph of $x+y+z=5$.  Geometrically, what is it?
+
+\vfill
+
+\item Adding a couple of more equations, we get a system of 3 equations in 3 variables:
+
+\begin{align*}
+x + y + z &= 5\\
+x - y \phantom{ + zz } &= 1\\
+x + y - z &= -1
+\end{align*}
+
+Create 3D graphs of all three and verify that the point $(1,0,4)$ is the intersection of the 3 planes.
+
+\vfill
+
+\item Sadly, there is no 4D mode for GeoGebra, and to be honest, even in 3D finding a point at the intersection of three planes isn't very easy!  Certainly not as easy as the 2D version of things: finding the intersection of two lines.  This is where the CAS mode comes to the rescue.  We're going to use the CAS mode to work with {\em matrices}.  Matrices are simply tables of numbers -- in the current setting a good way to think of them is as a system of equations with all the decorations removed.  We don't need to write the variables (we always write them in the same order anyway) we just record the coefficients of them.  There's not even a reason to write the $=$ signs - they always come right before the last number in a row (which is whatever is on the right-hand side of the equation).
+
+Here's a very simple system of equations:
+
+\begin{align*}
+x + y &= 14\\
+x - y &= 6\\
+\end{align*}
+
+This is how it looks as a matrix:
+
+\[ \left( \begin{array}{ccc} 1 & 1 & 14 \\ 1 & -1 & 6 \end{array} \right) \]
+
+To enter a matrix into GeoGebra we use nested French braces.
+
+Switch to ``CAS'' mode and enter the following:
+
+\verb+ A = {{1,1,14},{1,-1,6}}+
+
+Press ``Enter'' and it should display a pretty matrix named $A$.
+
+\vfill
+
+\item There is a command in GeoGebra's CAS which is too long to type.  Try typing ``Red'' and then click on the suggestion that pops up.  You want to run a command that looks like
+
+\verb+ReducedRowEchelonForm(A)+
+
+We already know that $x=10$, $y=4$ is the solution to that system.  (If not, take a second to work that out in your head.)  Can you see this solution in the output of that last command?
+
+\vspace{.7in}
+
+\item Final Challenge: Convert the system of linear equations
+\begin{align*}
+x + y + z &= 5\\
+x - y \phantom{ + zz } &= 1\\
+x + y - z &= -1
+\end{align*}
+
+into a matrix and use \verb+ReducedRowEchelonForm()+ to find its solution.
+
+\vfill
+
+\end{enumerate}
