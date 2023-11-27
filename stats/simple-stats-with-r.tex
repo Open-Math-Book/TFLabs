@@ -1,0 +1,1341 @@
+\documentclass[11pt]{amsart}
+
+% load packages ----------------
+\usepackage{amsfonts, amsthm, amssymb, amsmath, etoolbox}
+\usepackage{mathtools}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage[margin=0.75in]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\usepackage[inline]{enumitem}
+\setlist{itemsep=0em, topsep=0em, parsep=0em}
+\usepackage{booktabs}
+\setlist[enumerate]{label=(\arabic*)}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,shapes}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+% macros editing -------------------------------
+\newcommand{\todo}[1]{{\color{red} TODO: #1 }}
+
+% macros precalc -------------------------------
+\newcommand{\meters}{\;\mathrm{meters}}
+\newcommand{\miles}{\;\mathrm{miles}}
+\newcommand{\feet}{\;\mathrm{feet}}
+\newcommand{\hour}{\;\mathrm{hour}}
+\newcommand{\minute}{\;\mathrm{minute}}
+\newcommand{\second}{\;\mathrm{second}}
+\newcommand{\hours}{\;\mathrm{hours}}
+\newcommand{\minutes}{\;\mathrm{minutes}}
+\newcommand{\seconds}{\;\mathrm{seconds}}
+\newcommand{\rad}{\;\mathrm{rad}}
+
+
+% macros calc -------------------------------
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\dydx}{\dfrac{dy}{dx}}
+\newcommand{\dydu}{\dfrac{dy}{du}}
+\newcommand{\dudx}{\dfrac{du}{dx}}
+\newcommand{\ddx}{\dfrac{d}{dx}}
+\newcommand{\ddt}{\dfrac{d}{dt}}
+\newcommand{\ddxn}[1]{\dfrac{d^{#1}}{dx^{#1}}}
+\newcommand{\ddtn}[1]{\dfrac{d^{#1}}{dt^{#1}}}
+\newcommand{\fx}{f(x)}
+\newcommand{\gx}{g(x)}
+\newcommand{\hx}{h(x)}
+\newcommand{\limh}{\lim\limits_{h \to 0}}
+\newcommand{\limx}[1]{\lim\limits_{x \to #1}}
+
+% macros prob stat ---------------------------------
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\sd}{sd}
+\DeclareMathOperator{\E}{E}
+\newcommand{\xbar}{\bar{x}}
+\newcommand{\Xbar}{\bar{X}}
+\newcommand{\ybar}{\bar{y}}
+\newcommand{\Ybar}{\bar{Y}}
+\newcommand{\phat}{\widehat{p}}
+\newcommand{\Phat}{\widehat{P}}
+\newcommand{\textor}{\textrm{ OR }}
+\newcommand{\textand}{\textrm{ AND }}
+
+% delimiters ---------------------------------
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+
+% general macros ---------------------------------
+\newcommand{\define}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\bydef}{\coloneqq}
+
+
+% environments for lecture ---------------------------------
+\newcounter{CounterPuzzle}
+\newcounter{CounterHW}
+\newcounter{CounterEnvironment}
+
+\newenvironment{notes}{%
+	\begin{description}[style=nextline]%
+		\setlength{\itemsep}{10pt}%
+		\setlength{\parskip}{2pt}%
+	}
+        {
+	\end{description}
+}
+
+\newenvironment{puzzle}{%
+	\begin{center}
+		\begin{tabular}{|p{0.75\textwidth}|}
+			\hline\\
+			\textbf{Puzzle.}
+		}%
+		{% 
+			\\\\\hline
+		\end{tabular} 
+	\end{center}
+}
+
+\newenvironment{homework}{%
+	\refstepcounter{CounterHW}
+	\vspace{2em}
+	$\blacktriangleright$
+	\textbf{Homework~\theCounterHW.}
+}%
+{%
+	\vspace{2em}
+}
+
+\newenvironment{example}{%
+	\refstepcounter{CounterEnvironment}
+	\vspace{2em}
+	$\blacktriangleright$
+	\textbf{Example~\theCounterEnvironment.}
+}%
+{%
+	\vspace{2em}
+}
+
+\newenvironment{definition}{%
+	\refstepcounter{CounterEnvironment}
+	\vspace{2em}
+	$\blacktriangleright$
+	\textbf{Definition~\theCounterEnvironment.}
+}%
+{%
+	\vspace{2em}
+}
+
+\newenvironment{theorem}{%
+	\refstepcounter{CounterEnvironment}
+	\vspace{2em}
+	$\blacktriangleright$
+	\textbf{Theorem~\theCounterEnvironment.}
+}%
+{%
+	\vspace{2em}
+}
+\newenvironment{remark}{%
+	\refstepcounter{CounterEnvironment}
+	\vspace{2em}
+	$\blacktriangleright$
+	\textbf{Remark~\theCounterEnvironment.}
+}%
+{%
+	\vspace{2em}
+}
+
+% environment for hw -----------------------
+\newcounter{CounterQ}
+% \newenvironment{Q}[1]{%
+	%   \def\Qarg{#1cm}
+	%   \refstepcounter{counter}
+	%   \noindent\textbf{\thecounter.} \vspace{Qarg}
+	%   }{}
+\newenvironment{q}{%
+	\refstepcounter{CounterQ}
+	\noindent\textbf{\Large{\theCounterQ}.}
+}{
+	\vspace{2ex}
+}
+
+% environment for code -----------------------
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonstyle}{
+	language=Python,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstnewenvironment{python}{\lstset{style=pythonstyle}}{}
+
+\lstdefinestyle{terminalstyle}{
+	backgroundcolor=\color{backcolour},       
+	numbers=none,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstnewenvironment{terminal}{\lstset{style=terminalstyle}}{}
+
+\lstdefinestyle{rstyle}{
+	language=R,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstnewenvironment{rcode}{\lstset{style=rstyle}}{}
+
+
+
+
+
+
+\title{Simple Stats in R}
+
+% begin document -------------------
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+%\chapter{R}
+
+% ==================================
+\section{Introduction}
+
+In this topic, we get started with just the basics of R. In particular, you should be able to do the following
+
+\begin{enumerate}
+\item Start an Posit Cloud Account or download R to your personal laptop
+\item Find help for working with functions in R
+\item Set the working directory in R
+\item Assign variable names 
+\end{enumerate}
+
+% ==================================
+\section{Getting Access to R}
+
+Statistical software play a central role in statistical applications.
+These days, the two leading languages are R and Python. In this
+chapter, we will focus on R. In order to start using R, we first need
+to gain access to it.  There are two ways to access R.  The first is
+to use R in your browser by signing up for a free account as
+posit.cloud.  The second way is to download two items: R and its IDE
+called RStudio.  Below, we outline both ways of accessing R.
+
+% ~~~~~~~~~
+\subsection{R in your Browser}
+
+Click on the link below and create an account.  At this time, free
+accounts offer 25 hours of access per month and paid accounts provide
+more time. This is the fastest way to get started with R.
+
+\begin{center}
+  \href{https://posit.cloud/}{https://posit.cloud/}
+\end{center}
+
+% ~~~~~~~~~~~
+\subsection{Downloading R and RStudio}
+
+To download R to your computer, you need to download two pieces of software
+\begin{enumerate}
+\item R, which is like the engine underneath the hood
+\item RStudio, which is the controls and the software you'll actually work with.
+\end{enumerate}
+
+To begin your download of R, click on the following link
+
+\begin{center}
+  \href{http://lib.stat.cmu.edu/R/CRAN/}{http://lib.stat.cmu.edu/R/CRAN/}
+\end{center}
+
+Then select the link corresponding to your computer type
+
+\includegraphics[scale=0.25]{img-m0t1-01.png}
+
+\textbf{If you are on a MAC}, click the link corresponding to your operating system. 
+
+\includegraphics[scale=0.25]{img-m0t1-02.png}
+
+\textbf{If you are on Windows}, click the ``base'' link
+
+\includegraphics[scale=0.25]{img-m0t1-03.png}
+
+Move forward as if downloading any other program. Once you download R, you still need to download RStudio.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Downloading RStudio}
+
+To begin downloading RStudio, click on the following link
+
+\begin{center}
+\href{https://www.rstudio.com/products/rstudio/download/}{https://www.rstudio.com/products/rstudio/download/}
+\end{center}
+
+Select the ``Download RStudio Desktop'' button
+
+\includegraphics[scale=0.25]{img-m0t1-04.png}
+
+Then select the download link corresponding with your operating system
+
+\includegraphics[scale=0.25]{img-m0t1-05.png}
+
+More forward as if downloading any other program.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Testing Your Download}
+
+Once you've downloaded both R and RStudio, let's test that everything
+works.  Open RStudio, you'll never actually open R as it's always just
+behind the scenes.  You should see a program open with four windows.
+To test if everything is working, click by the ``$>$'' in the lower
+left window, type ``2+2'' and hit enter.  If ``[1] 4'' appears, then
+you've successfully downloaded R and RStudio.
+
+\includegraphics[scale=0.25]{img-m0t1-06.png}
+
+% ====================================
+\section{A First Look at R}
+\label{sec:a-first-look}
+  
+From now on, anytime we refer to interacting with R, note that we
+really mean RStudio.  Indeed, it is RStudio that we open on our
+computer, it is RStudio that we type our code into, it is RStudio that
+prints a bar chart.
+
+When you first open RStudio, four windows appear.
+\begin{description}
+\item[Upper Left] The script window.  This is where we'll be doing
+  most of our typing.
+\item[Lower Left] The console window.  This is where output of our
+  code will appear and we can run single lines of code here
+\item[Upper Right] Find file directory, variable names in play, etc
+\item[Lower Right] Plots will appear here once we get to those
+\end{description}
+  
+We will be doing our typing mostly in the script window.  To get
+started, open a new script by clicking ``File > New File > R Script''.  On Line 1, type
+
+\begin{r}
+2 * 3  
+\end{r}
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Working Directory (Only for Downloaded R)}
+\label{sec:}
+
+\todo{Put this just before first using a data file}
+
+\begin{itemize}
+\item Create a folder for the class where you'll put all your R work
+\item Set working directory 
+\item Demonstrate with a data set 
+\end{itemize}
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Variables}
+\label{sec:variables}
+
+In the context of R, the term \textbf{variable} is not an unknown
+quantity to be determined, as in ``Solve for $x$ in $3x-5=10$'' It
+\textbf{is} a nickname, given for convenience.  We will know exactly
+what it is, because we define it.
+
+Sometimes, we like to choose a short variable name that is simple to type
+  
+\begin{example}
+  \begin{rcode}    
+    a <- 5 # assign the name 'a' to the value '5'
+    3*a
+    5*a^2+5
+    
+    b <- 2*a-6
+    b
+    
+    3*a^b-2
+  \end{rcode}
+\end{example}
+
+Othertimes, it's best to use a variable name that is descriptive so
+when we read our code later, we understand what it is doing
+
+\begin{example}[Convert kg to lb's]
+  \begin{rcode}    
+    weight_kg <- 50 # assign name weight_kg to the number 50
+    weight_lb <- 2.2*weight_kg # assign convert weight_kg and assign new name
+    weight_lb # print the value of weight_lb
+  \end{rcode}
+  \textbf{Important:} can't use spaces in variable names, use underscore instead.
+\end{example}
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Functions}
+\label{sec:functions}
+
+We'll learn a bunch of \define{functions} in R.  \textbf{Tip:} Keep a
+single page in your notes like a glossary with the name of the
+function and what it does.  Add to this function glossary everytime
+you learn a new function.
+
+\begin{example}[Absolute Value Function]
+  The absolute value function is written like ``abs()''.  Place the
+  value you want to take the absolute value of into the parenthasis.
+  \begin{rcode}
+    abs(4) # absolute value of 4
+    abs(-3) # absolute value of -3
+    
+    x <- -3*5 + 2
+    abs(x)
+    abs(-3*5+2) # same as abs(x)
+
+    abs(y) # notice the error because we haven't told R what 'y' is
+  \end{rcode}    
+\end{example}
+
+\begin{example}[Rounding function]
+  A common function we'll want to use to rounding numbers.  There is
+  a function to do this for us.  Using this function is better than
+  doing it yourself.
+  \begin{rcode}
+    number <- 4.3134314512351
+    round(number) # round to nearest whole number
+    round(number, 2) # round to 2 decimal places
+    round(number, 4) # round to 4 decimal places
+  \end{rcode}    
+\end{example}
+
+It is incredibly common to forget exactly how a function works, or
+maybe you're getting an error that you can't quite crack. There are
+two ways of getting help.
+
+\begin{enumerate}
+\item Google.  If you can't recall how the \texttt{round()} function
+  works, google ``round function R''
+\item Help within RStudio.  Go to the lower right window, click the
+  'help' tab, and search for your function.
+\end{enumerate}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Exercises}
+
+\begin{q}
+  What R code is used to compute the following expressions?
+  \begin{enumerate}
+  \item Subtract 10 from 2 
+  \item Multiply 3 by 5
+  \item Divide 9 by 2
+  \item From 5, subtract 3 times 2
+  \item Double the difference of 5 and 3
+  \item Four squared
+  \item Divide 8 by 2 squared
+  \end{enumerate}
+\end{q} 
+
+% ~~
+
+\begin{q}
+  Consider the following R code.
+
+\begin{rcode}
+mass_kg <- 2.62 
+mass_g <- mass_kg * 1000 
+mass_g 
+\end{rcode}
+
+\begin{enumerate}
+\item Explain in plain language what the following three line program
+  does, i.e. state what each line does and what the meaning of the
+  output of the program is
+\item  Run the program. (Hit enter after each line break.) What is its output?  
+\item  Modify this code so that it converts the inital mass to pounds (there are 2.2
+  pounds in a kilogram) and print the resulting mass.  Run this
+  program.
+\end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q} 
+  Run \texttt{help(abs)} in R. What happens?  Familiarize yourself
+  with the built-in functions \texttt{abs()}, \texttt{round()},
+  \texttt{sqrt()} by running this ``help function'' on \texttt{round}
+  and \texttt{sqrt}. Use these built-in functions to create R code to
+  accomplish the following:
+
+  \begin{enumerate}
+  \item The absolute value of -15.5.   
+  \item 4.483847 rounded to one decimal place. 
+  \item Assign the value of the square root of 2.6 to a variable. Then
+    round the variable you’ve created to 2 decimal places and assign
+    it to another variable. Print out the rounded value.
+  \end{enumerate} 
+\end{q}
+
+% ~~
+
+\begin{q}
+  The following code estimates the total net primary productivity
+  (NPP) per day for two sites. It does this by multiplying the grams
+  of carbon produced in a single square meter per day by the total
+  area of the site. It then prints the daily NPP for each site.
+
+\begin{rcode}
+site1_g_carbon_m2_day <- 5 
+site2_g_carbon_m2_day <- 2.3 
+site1_area_m2 <- 200 
+site2_area_m2 <- 450 
+site1_npp_day <- site1_g_carbon_m2_day * site1_area_m2 
+site2_npp_day <- site2_g_carbon_m2_day * site2_area_m2 
+site1_npp_day 
+site2_npp_day 
+\end{rcode}
+
+\begin{enumerate}
+\item Explain what each line does. You can refer to each line number, e.g. ``Line 1 does so and so''. 
+\item Run the program using an RScript (upper left window, highlight
+  everything, then click 'Run'). What is the output of the program?
+\item Continuing the above code, write a line of code for each of the
+  following items
+  \begin{enumerate}
+  \item The sum of the total daily NPP for the two sites combined.  
+  \item The difference between the daily NPP for the two sites. We
+    only want an absolute difference, so use abs() function to make
+    sure the number is positive.  
+  \item The total NPP over a year for the two sites combined (the sum
+    of the total daily NPP values multiplied by 365).
+  \end{enumerate}  
+\end{enumerate}
+
+\end{q} 
+
+% ==================================
+\section{Vectors in R}
+
+One of the most fundamental objects we work with in R is known as a vector.  Think of it like a list of values. Often it may come as a column from a spreadsheet.  R gives us ways to perform different mathematical tasks with these vectors.  In this topic, most of the vectors will not contain too many items, so we'll learn what R can do in situations when we could just as easily do it by hand or a basic calculator.  But the real benefit of R comes into play when working with much larger datasets.
+
+By the end of the section, you'll know 
+\begin{enumerate}
+\item How to create a vector and provide it a variable name
+\item Modify a vector by adding new items to it
+\item Perform algebra with vectors
+\item Various functions that tell us certain features of vectors, like how long it it, it's largest/smallest value, the sum of all the entries, the mean of the entries
+\item How to extract entries with certain properties, e.g. the 23 entree, or the entries larger than 5, etc.  
+\end{enumerate}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Motivation}
+
+In many statistical scenarios, we'll work with databases. Think of these like an Excel
+spreadsheet. We'll get to working with those in R soon enough, for 
+now, here's a simple one we're familiar with, a grade sheet
+\begin{center}
+  \begin{tabular}{cccc}
+    \textbf{Student} & \textbf{HW1} & \textbf{HW2} & \textbf{Exam1} \\
+    \hline\hline
+    Joe              & 35 & 45 & 84 \\
+    Jen              & 42 & 48 & 91 \\
+    Jes              & 37 & 42 & 85 \\
+    Jon              & 32 & 40 & 78 \\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  \end{tabular}
+\end{center}
+
+A common task is to want to separate out a column, say ``HW1'', and
+work with that because maybe you want to
+\begin{itemize}
+\item add 5 points to every score because a question wasn't fair
+\item divide by the total number of possible points to get a percentage score
+\item add columns together to get a total HW grade,
+\item etc
+\end{itemize}
+
+A column in a database like this is simply a vector.
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Defining Vectors}
+
+A vector is a list of either numbers or of words. There is an
+R-function to create a \define{vector},
+
+\begin{rcode}
+# generic column function
+c()
+
+# list with numbers 1,2,3,4
+c(1,2,3,4)
+
+# a list of names, note the quotes
+c(``jim'', ``james'', ``jimmie'') 
+\end{rcode}
+
+Notice those lies that start with a `\#`?  Those are what computer programmers call \define{comments}.  That hash character tells the computer to ignore anything written behind it. This gives the human reading the code a chance to make notes right inside the code in a way that does not cause the computer to make an error.
+
+We just filled a vector with names surrounded by quotations
+
+\begin{rcode}
+  c(``jim'', ``james'', ``jimmie'')
+\end{rcode}
+
+This ensures that the vector is filled with what are called
+\define{strings}, which is a computer science way of saying a sequence
+of letters or numbers. If you didn't include the quotations, the
+computer reads them as variables. If you never defined a variable
+named \texttt{jim}, or \texttt{james}, or \texttt{jimmie}, then you'd
+get an error.
+
+\begin{rcode}
+  c(jim, james, jimmie) # should produce an error
+\end{rcode}
+
+But if you define these variables, then your vector will be filled
+with those values.
+
+\begin{rcode}
+  c(``x'', ``y'', ``z'') # vector with the letters in each position
+  c(x,y,z) # error b/c we never defined variables x,y,z
+
+  # let's define x,y,z as variables x <- 5 y <- 12 z <- 13 c(x,y,z) #
+  no longer an error
+
+    c(``x'', ``y'', ``z'') # still a vector with strings
+  \end{rcode}
+    
+We can name columns to more easily refer to them
+
+\begin{rcode}
+  column_1 <- c(5,3,5,7,25,234)
+  column_2 <- c(``naomi'', ``wilshi'')
+  primes <- c(2,3,5,7,11)
+  evens <- c(2,4,6,8,10,12,14,16)
+\end{rcode}
+
+Then to view them, compile just the name
+
+\begin{rcode}
+  column_1 
+  column_2 
+  primes 
+  evens 
+\end{rcode}
+
+Suppose you're studying mice, you did an experiment with five mice and
+you weighed each. So you created two vectors
+
+\begin{rcode}
+  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  weight_g <- c(50,60,65,82,67)
+\end{rcode}
+
+If we continued the experiment and want to add another mouse and its
+weight to our vector, we can do so by putting our previous vector
+names into a new vector and name that.
+
+\begin{rcode}
+  names <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  weight_g <- c(weight_g,39)
+  
+  # print those
+  names
+  weight_g
+\end{rcode} 
+
+Note how these overrode the orginal columns \texttt{names} and \texttt{weight\_g}.  So if you are worried about making a mistake, it's a good practice to give the updated vectors a new name
+
+\begin{rcode}
+  # original vectors
+  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  weight_g <- c(50,60,65,82,67)
+  
+  # update them with new mouse info    
+  names_v2 <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  weight_g_v2 <- c(weight_g,39)
+  
+  # now we still have the original
+  names
+  weight_g
+\end{rcode} 
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\section{Vector Arithmetic}
+
+In this section, we are going to learn how to add, divide, multiply, and divide. The difference between this and typical algebra is that, typically, you do them to a pair of numbers.  Here, we're going to (1) do the algebra with a number and a vector, and also (2) with two vectors.
+  
+The the following. Give a variable name to any vector with only
+numbers (i.e. no strings) of any length.  Then to that vector add a
+number to it, subtract a number from it, multiply it by a number,
+divide it, raise it to some power.
+
+
+Now try this. Give two variable names to two vectors whose elements
+are all numbers (i.e. no strings). The vectors should be be the same
+length. Then add them together, subtract them, multiply them together,
+and raise one to the power of the other.
+
+Now repeat this, except make one vector have length 3 and the other of
+length 4. Repeat again except make one vector length 2 and the other
+length 4.  Note what happens.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Functions on Vectors}
+
+Just like you can plug numbers into R-functions, there are certain
+R-functions that we can plug vectors into.
+  
+Recall that vectors, for us, will typically be filled with data. Perhaps its a column from a database, e.g. a gradebook. Here are some common things we'd want to be able to do with it.
+  
+\begin{example}
+  \begin{rcode}
+    hw1_grades <-  c(51,21,35,15,35,15,23,65,15,35,13,54,2
+    6,35,12,45,12,35,58,54,43,49,47,45,42,41,43,46,48,54,42,48,47)
+    
+    length(hw1_grades) # returns how many items are in the list
+    max(hw1_grades) # returns the max grade
+    min(hw1_grades) # returns the min grade
+    sum(hw1_grades) # adds all the grades together
+    mean(x) # returns the mean grade
+  \end{rcode}
+\end{example}
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\section{Subsetting Vectors}
+
+Another important construction we'd like to be able to perform on a
+vector is to look at certain parts of the vector. For example, maybe
+we want to see just the 14th entry, or we want all the entrees above
+10, or that are not 0.  This is called \emph{subsetting vectors}
+because we are trying to extract a subset of the entrees in our vector
+  
+Here are various ways to get at some important information contained
+within a vector.
+  
+\begin{rcode}
+  # create an arbitrary vector
+  x <- c(1,5,4,8,6,4,5,3,1,2,4,9,8,7,4,6,5,3,8,1,2,5,3,6,1,2,5,3)
+  
+  # to see just the 6th entry, replace 6 with any entry
+  x[6]
+  
+  # to see the 3rd, 6th, 10th entry. Note the column function used to return multiply entrees
+  x[c(3,6,10)]
+  
+  # to see all the entrees strictly greater than 5
+  x[x > 5]
+  
+  # to see all entrees less than or equal to 7
+  x[ x <= 7]
+  
+  # to see all entress that are not equal to 4
+  x[ x != 4 ]
+  
+  # combine multiple properties with & (and) and | (or)
+  x[ x>5 & x<=7] # returns 5<x<=7, we do need to use the & here
+  x[ x < 3 | x >=8] # returns x str. less than 3 or at least 8    
+\end{rcode}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Exercises}
+
+\begin{q}
+  Create a variable (any name you like) from the following vector
+  (copy and paste, but make sure it's all on one line):
+
+\begin{rcode}
+  c(35,16,64,35,43,25,95,12,62,43,27,81,32,
+  46,25,29,93,105,56,68,48,72,83,72,42,29,12,61,
+  54,82,53,19,8,68,1,0,29,14,82,86,94,62,52,18,68,75,84)
+\end{rcode}
+
+  Using R, what command will print out the values that are
+  \begin{enumerate}
+  \item greater than 30
+  \item not equal to 82
+  \item between 45 and 75.
+  \end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q}
+  The number of birds banded at a series of sampling sites has been
+  counted by your field crew and entered into the following
+  vector. Counts are entered in order and sites are numbered starting
+  at one. Cut and paste the vector into your assignment and then
+  answer the following questions by printing them to the screen (again
+  be certain everything is on the same line). Some
+  R functions that will come in handy include \texttt{length(), max(), min(),
+  sum()}, and \texttt{mean()}.
+
+\begin{rcode}
+number_of_birds <- c(28, 32, 1, 0, 10, 22, 30, 19, 145, 27,36, 25, 9, 38, 21, 12, 122, 87, 36, 3, 0, 5, 55, 62, 98, 32,900, 33, 14, 39, 56, 81, 29, 38, 1, 0, 143, 37, 98, 77, 92, 83, 34, 98, 40, 45, 51, 17, 22, 37, 48, 38, 91, 73, 54, 46, 102, 273, 600, 10, 11)
+\end{rcode}
+
+What R command will give the answer the questions?
+  \begin{enumerate}
+  \item How many sites are there?   
+  \item How many birds were counted at site 42?   
+  \item What is the total number of birds counted across all of the
+    sites?   
+  \item What is the smallest number of birds counted?   
+  \item What is the largest number of birds counted?    
+  \item What is the mean number of birds seen at a site?   
+  \end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q}
+  You have data on the length, width, and height of 10 individuals of
+  the yew Taxus baccata (a type of shrub) stored in the following vectors:
+
+\begin{rcode}
+length <- c(2.2, 2.1, 2.7, 3.0, 3.1, 2.5, 1.9, 1.1, 3.5, 2.9)
+width <- c(1.3, 2.2, 1.5, 4.5, 3.1, 1.7, 1.8, 0.5, 2.0, 2.7)
+height <- c(9.6, 7.6, 2.2, 1.5, 4.0, 3.0, 4.5, 2.3, 7.5, 3.2)
+\end{rcode}
+
+  What R command will provide the following?
+  \begin{enumerate}
+  \item The volume of each shrub (i.e., the length times the width
+    times the height). storing this in a variable will make some of
+    the next problems easier
+  \item The total volume of all of the shrubs.
+  \item A vector of the height of shrubs with lengths greater than
+    2.5.
+  \item A vector of the height of shrubs with heights greater than 5.
+  \item A vector of the heights of the first 5 shrubs.
+  \item A vector of the volumes of the first 3 shrubs.
+  \end{enumerate}  
+\end{q}
+
+% ====================================
+\section{DataFrames}
+\label{sec:data-frames}
+
+\begin{notes}
+
+\item 	In the previous topic, we learned all about vectors, e.g.
+	
+	\begin{rcode}
+		x <- c(1,2,3)
+		rats <- c(``rat01'', ``rat02'',)
+		weight_g <- c(30,41,50)
+	\end{rcode}
+
+	In this topic, we learn about dataframes, which is a fancy way to saying a table, which is really just a bunch of columns taken together	
+	
+	\begin{center}
+          \begin{tabular}{cccc}
+            rats & weight\_g & blood\_pressure & $\cdots$ \\
+            \hline\hline
+            01&30&52&\\
+            02&41&41&\\
+            $\vdots$&$\vdots$&$\vdots$&\\
+          \end{tabular}
+	\end{center}
+        
+ \item[Dataframes]
+
+	Dataframes are the lifeblood of applied statistics as they are the primary method of organizing data.  Other names for a dataframe include \textit{tables, database, etc}.  You've probably seen them organized in Excel or in Google Sheets. However, when working with larger datasets, these programs become slow and unwieldy, which is where R shines.  	
+	
+\item[Goals]
+
+  By the end of this topic, you'll be able to
+  \begin{enumerate}
+  \item upload a.csv file, that is a database, into R
+  \item learn several functions to get properties of a database (e.g. the size)
+  \item learn how to subset databases
+  \end{enumerate}
+  
+\item[A word of encouragement]
+
+  Between the last topic and this one, we're learning a lot of
+  different R functions and it's easy to get lost in them.  Just keep
+  in mind that you do not need to memorize all these functions.  You
+  can always have access to some notes, so it's a good idea to create
+  your own glossary of each R functions we learn with a brief
+  description of each.
+  
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Loading external data from a csv file}
+
+\begin{notes}
+	
+\item[What's a csv files]
+
+	The most common filetype for a database isn't .xlxs or whatever Excel reads, but .csv which means 'comma separated value'.  If you open up a .csv in notepad or another plain text edittor, you'll notice that it's hard to read.  But the point is for the computer to read this file, not a human. The advantage is that a .csv file is much smaller which allows to the computer to work much faster.  
+	
+	\begin{puzzle}
+		Got to \textit{Blackboard > Datasets} and download the \texttt{census.csv} file. Place it into your working directory.
+		
+		We're going to open the file, but not in Excel, so don't just double click it. If you have Windows, open that file in Notepad 	(rightclick and choose Open With).  If you have a MAC, open it in TextEdit.  Describe how you feel when looking at that file.		
+	\end{puzzle}	
+
+\item[Uploading a dataframe in R] 
+
+	To open this file in R
+	\begin{rcode}
+		census <- read.csv(``census.csv'')
+	\end{rcode}
+
+	{\color{red} WARNING - If you didn't place this file into your working directory, you'll receive an error}
+	
+\item[A few observations]	
+
+	\begin{itemize}
+		\item Running this line doesn't allow us to view the dataframe, that's coming soon. For now, we have this less good way to viewing the dataframe
+		
+		\begin{rcode}
+			census #typing the name of a whatever variable will print it
+		\end{rcode}
+			
+		\item The \texttt{census} part to the left of the arrow is the variable name that we're giving to this dataframe.  This way, we can always refer to the dataframe in R by typing \texttt{census}
+		\item The \texttt{read.csv()} is a function that uploads a given csv file into R. 
+		\item Always place your file name in quotations.  
+	\end{itemize}	
+	
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Creating your own dataframe}
+
+\begin{notes}
+	
+\item[Main Idea] 
+
+	A dataframe is really just a bunch of vectors of the same length glued together as columns.  There is a function \texttt{data.frame()} in R to do this gluing for us.
+	
+\item[Example] 
+
+	\begin{example}
+		Let's pretend like we're doing a project in biology on the population of bluejays. So we travel to three different sites and count how many we see.  Before we can do statistical analysis, we need to upload our data into R.  Here's how.
+		
+		\begin{rcode}
+			# create vectors
+			site <- c(``site01'', ``site02'', ``site03'')
+			count <- c(53,67,89)
+			date_visit <- c(``2021-10-03'', ``2021-10-05'', ``2021-10-09'')
+			
+			# glue, or bind, these vectors together to create a dataframe
+			df_birds <- data.frame(site,count,date_visit)
+			
+			# view the dataframe in the bad way (we haven't learned the good way yet)
+			df_birds
+			
+			# add a followup obervation for each of the three sites for counts done one month later
+			second_count <- c(43,42,52)
+			df_birds <- data.frame(df_birds, second_count) 
+		\end{rcode}
+	\end{example}		
+	
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Inspecting Data Frames}
+
+\begin{notes}
+	
+\item[Intro]
+
+  We'll want the ability to perform various actions with dataframes.  For instance, we want to look at them, we'll want to subset the to return some of the data that satisfies some property, we'll want to extract maybe just one column or just one row.  We'll perform these with the \texttt{census} dataframe we uploaded earlier.
+
+  
+\item[R-functions]
+
+\begin{rcode}
+# View your data frame ####
+census # prints as much of the dataframe as R wants to
+View(census) # opens a spreadsheet type view, easier to navigate
+head(census) # prints the first few lines, good for getting a quick sense of your data
+
+# How big is your dataframe ####
+dim(census) # returns rows x cols
+
+# Names of columns ####
+names(census)
+\end{rcode}
+
+ 
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Subsetting Data Frames}
+
+\begin{notes}
+  
+\item[Intro]
+
+  There are various reasons that we'll have a dataframe and only want to return certain rows or columns.  This is called \define{subsetting} your dataframe because we're trying to get at a subset of our original dataframe.  We'll see actual reasons why we'd want to do this later, but for now, we'll just learn how to.
+
+  
+\item[Main Idea]
+
+  Recall if we have a vector with a name, we subset it as follows
+
+\begin{rcode}
+vector <- c(23,562,123,641,134)
+vector[<condition to tell us which entrees to return>] 
+\end{rcode}
+
+  For dataframes, we need two numbers to tell us which rows and columns to return
+
+\begin{rcode}
+# replace <""> with the desired conditions. 
+census[<conditions for rows>,<conditions for columns>]
+\end{rcode}
+
+\item[Conditions on both rows and columns]
+
+\begin{rcode}
+# return the 3rd row 4th column
+census[3,4]
+
+# return 4th row, 3rd column
+census[4,3]
+
+# leave a slot blank to return all rows/columns
+census[3,] # returns 3rd row, all cols
+census[,4] # returns all rows, 4th col
+census[,] # returns all rows, all cols
+\end{rcode}
+
+  
+\item[Syntactic sugar to refer to an entire column]
+
+  Use names of columns to refer to an entire column. 
+  
+\begin{rcode}
+census$age # the age column
+census$race_general # the race_general column
+\end{rcode}
+
+  \begin{puzzle}
+    Give the variable name \texttt{age} to the age column.  This is a vector. Then
+    print out just the 3rd entree of that vector.
+  \end{puzzle}
+
+  
+\item[Return all rows with certain properties]
+
+  A common reason to subset is to view data that satisfies certain conditions.  Here are some examples
+
+\begin{rcode}
+census[,census$age > 40] #returns all rows with age above 40
+
+census[,census$race_general == "Black"] # returns all rows corresponding to Black folk
+\end{rcode}
+
+\item[Return a single column based on properties of another column]
+
+\begin{rcode}
+# prints a vector of total family incomes for those under 30
+census$total_family_income[census$age < 30]
+\end{rcode}
+
+  \begin{puzzle}
+    Why do you think the following code gives an error
+\begin{rcode}
+census$race_general[census$total_family_income < 25000,]
+\end{rcode}
+    If you wanted to print out all the races of the families making under 25000, how could you fix the above code?  Hint: delete just a single character.
+  \end{puzzle}
+
+\item[Synthesize various operations we've learned] 
+  
+  \begin{puzzle}
+    Complete this task.  Give a nice variable name to the age column.
+    Then use vector arithmatic to create a new vector named
+    \texttt{age\_2030} for the ages in the year 2030.  Note that all
+    these ages are from year 2000, not 2022.  Then create a new
+    dataframe named \texttt{new\_census} that comprises all the columns
+    of the original census plus the new \texttt{age\_2030} vector.
+  \end{puzzle}
+
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+\subsection{Levels}
+
+\begin{description}
+  
+\item[What are levels]
+
+  Recall that a categorical variable takes as values 'categories', not numbers.
+
+  \begin{puzzle}
+    Which of the variables (i.e. column names) of the \texttt{census}
+    dataframe are categorical?
+  \end{puzzle}
+
+  \begin{definition}
+    The different possible values of a categorical variable are called
+    \define{levels} or sometimes \define{factors}.
+  \end{definition}
+  
+\item[R function to find levels]
+
+  R has a function \texttt{levels()} to tell us all levels that appear in any categorical variable. For us, these categorical variables will typically be a vector or a column in a dataframe.
+
+\begin{rcode}
+levels(census$race_general) 
+\end{rcode}
+
+
+\item[A warning]
+
+  Occasionally, you'll put in a variable that you think is categorical but R thinks is numerical.  Like a year, for example. You can fix this with the R function \texttt{as.factor()}.
+
+\begin{rcode}
+year <- census$census_year # create more easily named vector
+levels(year) $ returns NULL because R thinks these are numbers
+
+#here's the trick
+year <- as.factor(census$census_year)
+levels(year)
+\end{rcode}
+
+\end{description}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Exercises}
+
+\begin{q}[50\%]
+  Download \texttt{county.csv} from Blackboard.  This dataframe
+  contains data collected in 2017 from counties throughout the
+  US. What R code will provide the following
+  \begin{enumerate}
+  \item create a variable named \texttt{county} whose value is the
+    dataframe from the csv file
+  \item using R, print out the column names
+  \item print a single column (any one will do)
+  \item list the \emph{levels} of the column labelled
+    \texttt{median\_edu}
+  \item create a vector named \texttt{pop2018} by multiplying each
+    value of the column \texttt{pop2017} by 1 plus the vector (column)
+    \texttt{pop\_change} (this is estimating what the population would
+    be in 2018 given the population change from the previous year.)
+  \item create a new datagrame, with any name you like, by adding
+    \texttt{pop2018} to the \texttt{county} dataframe. Do not print
+    out this new dataframe.
+  \item Use R to list the column names of your updated data frame.
+ \end{enumerate}
+\end{q} \vfill
+
+% ~~
+
+\begin{q}[50\%]
+  Download \texttt{shrub-dimensions-labeled.csv} from Blackboard. This file
+  contains dimensions of a series of shrubs (shrubID, length, width,
+  height) and they need you to determine their volumes (length * width
+  * height). What R code will provide the following
+
+  \begin{enumerate}
+  \item Print a vector of shrub lengths
+  \item Create, a new vector of the volume of each of the shrubs and print it
+  \item Create a new data frame with just the shrubID and height columns
+  \item Create a new data frame with the second row of the full data frame
+  \end{enumerate}  
+\end{q} \vfill
+
+% ==================================
+\section{Data Visualization}
+
+\begin{notes}
+\item[What is Data Vis] 
+	%
+	For humans to understand data, looking at a giant database isn't going to help.  Databases are to store data in a systematic way so that it's easy to retrieve and work with.  But unless your database is very small, it'll be nearly impossible to glean any useful insights into the data simply by looking at it.  
+	
+	Data visualizations have been are continue to be developed. These are ways of drawing pictures that capture some essential feature of the data.  Depending on the type of data, a different type of visualization may be appropriate.  
+	
+	In this topic, we'll only look at one kind of data visualization, the scatter plot.  Later in the course, we'll learn others. For now, our main interest is in learning how to work with R when it outputs data visualizations.
+	
+\item[Goals] 
+	%
+	In this topic, you should be able to
+	\begin{itemize}
+		\item Know how to print and read a scatterplot
+		\item How to export a scatter plot from R so that it can be placed into documents.
+	\end{itemize}   
+\end{notes}
+ 
+% ==================================
+\subsection{What's a scatterplot}
+
+\begin{notes}
+\item[Definition]
+	% 
+	A scatterplot is a plot of two paired quantitative variables against each other in the xy-plane.
+	
+\item[Paired Data]
+	%
+	We say that two variables are paired if they come from the same subject or observations. 
+	
+	\begin{example}
+		An example of paired data is: athletes run a mile two times.  The first time first thing in the morning without breakfast. The second time just after eating breakfast.  The fact that we have two times for each athlete (the subject) means these are paired.
+	\end{example}
+
+	\begin{example}
+		Paired data isn't required by be the same type of variable.  For instance, take patients at a doctors office, we can record each patient's height in inches and the length in seconds of their favorite song.  These are paired simply because they belong to the same person. the same \textit{subject}
+	\end{example}
+
+	\begin{example}
+		As example of non-paired data is: my Fall MAT221 students final exam scores and my Spring MAT221 students final exam scores.  There's no way to pair up the scores from the Fall to the scores in the Spring. There's no common subjects between the Fall and Spring. 
+	\end{example}
+
+	\begin{puzzle}
+		For each of the following scenarios, are the data paired?
+		\begin{enumerate}
+		\item The blood pressure of a patient before taking an experimental heart medication and six months after regularly taking the medication
+		\item Ten stats instructors teach MAT221 in the Fall and Spring semesters.  The data is, each instructor's average final exam score in each semester
+		\item Each athletes time to run a 5k for the Southern track team in 2020 and 2021.	
+		\end{enumerate}	
+	\end{puzzle}
+	
+\item[Back to Scatterplot]
+	%
+	Paired, quantitative data can be presented in a scatter plot. Draw one variable along the x-axis and the other along the y-axis.  At each paired data point, draw that point in the plane.  
+	
+	\includegraphics[scale=0.6]{img-m1t5-scatterplot-01.png}	
+	  	
+\item[Why a scatterplot]
+	%	
+	They are particularly helpful to see if there is some sort of relationship between the two variables.  If the points are seemingly scattered randomly throughout the plane, then there is likely no relationship.  If the points form a sort of loose shape or curve (like a line for example), then you likely have an interesting relationship that can be explored.
+	
+	Again, this relationship will be covered in more depth later. Our main purposes now are to get used to R.
+	
+\end{notes}
+
+% ==================================
+\subsection{A Basic Scatter Plot}
+ 
+\begin{notes}
+\item[Upload Data]
+	%
+	We wan to upload the census data in to R. First, place the data file \texttt{census.csv} in the proper place
+	\begin{itemize}
+		\item If you downloaded R, be sure that the data file is in your working directory
+		\item If you are in the browser, be sure that you've uploaded the data file via the bottom right window 
+	\end{itemize}
+
+	Then run the following in R
+	\begin{rcode}
+		census <- read.csv(``census.csv'')
+		
+		# get a quick sense of what the census data is all about
+		head(census)		
+	\end{rcode}
+
+\item[Rename columns for convenience]
+	%
+	It's not necessary to give handy variable names to columns, but if your project requires you to work with these columns extensively, it's worth it. We aren't working with any columns extensively here, since it's a very quick demo, but we'll provide convenient column names anyway.
+	\begin{rcode}
+		age <- census$age 
+		income <- census$total_personal_income
+	\end{rcode}
+
+\item[Draw the scatterplot]
+	%
+	Here's how you draw the scatterplot in R.
+	\begin{rcode}
+		plot(x=age, y=income)
+	\end{rcode}		  	
+	  	
+	  Observe this is not the most beautiful plot you've ever seen. R does have the capability to make amazing plots that are highly customizable.  We will not explore this in this course.  Search for ``ggplot'' for more info if you're curious.
+	  
+\item[How to extract the plot]
+  % 
+  To get this plot into a document, look towards the top edge of the plot and click ``Export $>$ Copy to Clipboard''. The you can paste it anywhere.  You can also save it to your hard drive in this way. 
+\end{notes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Exercises}
+\label{sec:}
+
+\begin{q}
+  What command would you use to extract just the counts of girls
+  baptized?
+\end{q} 
+
+% ~~
+
+\begin{q}
+  What R code would provide a plot the number of girls baptized
+  (y-axis) against the year (x-axis). No need to provide the plot
+  itself. Is there an apparent trend in the number of girls baptized
+  over the years?  How would you describe it?
+\end{q} 
+
+% ~~
+
+\begin{q}
+  Create a vector consisting of the proportion of boys to total people
+  baptized.
+\end{q} 
+
+% ~~
+
+\begin{q}
+  What R code will produce a plot the proportion of boys against
+  time. No need to provide the plot itself.
+\end{q} 
+
+% ====================================
+\section{Numerical Data}
+\label{sec:numerical-data}
+
+\todo{Include content from 2.4 and 2.5 of 221.}
+
+% ====================================
+\section{Categorical Data}
+\label{sec:categorical-data}
+
+\todo{Include content from 2.6 of 221.}
+
+
+
+% end document------------------
+\end{document}
