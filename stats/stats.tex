@@ -5,7 +5,528 @@
 \section{R}
 \label{sec:r}
 
+\subsection{Getting access to R}
 
-\section{spreadsheets}
-\label{sec:s}
+\subsubsection{R in your Browser}
+
+Log into your CoCalc account and create a new sage worksheet. There is something called ``cell magic'' that changes the nature of a cell so that it ``understands'' other languages besides sage.  For instance, typing \verb+%md+ on the first line of a cell makes that cell a markdown cell.  Typing \verb+%r+ on the first line of a cell makes that cell an R cell.
+
+It's easy to forget to put in the cell magic, which leads to some hilarious (but disconcerting) error messages.  Fortunately, there's a way to set the cell magic globally.
+If you put \verb+%default_mode r+ in the first line of the first cell of a worksheet (and execute it!) then all of the cells will be treated as containing R code.
+
+% ~~~~~~~~~~~
+\subsubsection{Downloading R and RStudio}
+
+There's no need to do this for today's lab, but if you want to get R running on your own machine\dots
+
+To download R to your computer, you need to download two pieces of software
+\begin{enumerate}
+\item R, which is like the engine underneath the hood
+\item RStudio, which is the controls and the software you'll actually work with.
+\end{enumerate}
+
+To begin your download of R, click on the following link
+
+\begin{center}
+  \href{http://lib.stat.cmu.edu/R/CRAN/}{http://lib.stat.cmu.edu/R/CRAN/}
+\end{center}
+
+Then select the link corresponding to your computer type.
+
+Move forward as if downloading any other program. Once you download R, you still need to download RStudio.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsubsection{Downloading RStudio}
+
+To begin downloading RStudio, click on the following link
+
+\begin{center}
+\href{https://www.rstudio.com/products/rstudio/download/}{https://www.rstudio.com/products/rstudio/download/}
+\end{center}
+
+Select the ``Download RStudio Desktop'' button
+
+
+Then select the download link corresponding with your operating system.
+
+
+\subsection{Variables}
+\label{sec:r_variables}
+
+In the context of R, the term \textbf{variable} is not an unknown
+quantity to be determined, as in ``Solve for $x$ in $3x-5=10$'' It
+\textbf{is} a nickname, given for convenience.  We will know exactly
+what it is, because we define it.  
+
+A slight oddity of the R language is that we don't use an equals sign ($=$) to assign a nickname, instead we type \verb+<-+ which is supposed to look like a left-pointing arrow.
+
+Sometimes, we like to choose a short variable name that is simple to type
+  
+\begin{example}
+  \begin{rcode}    
+    a <- 5 # assign the name 'a' to the value '5'
+    3*a
+    5*a^2+5
+    
+    b <- 2*a-6
+    b
+    
+    3*a^b-2
+  \end{rcode}
+\end{example}
+
+Othertimes, it's best to use a variable name that is descriptive so
+when we read our code later, we understand what it is doing
+
+\begin{example}[Convert kg to lb's]
+  \begin{rcode}    
+    weight_kg <- 50 # assign name weight_kg to the number 50
+    weight_lb <- 2.2*weight_kg # assign convert weight_kg and assign new name
+    weight_lb # print the value of weight_lb
+  \end{rcode}
+  \textbf{Important:} can't use spaces in variable names, use underscore instead.
+\end{example}
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Functions}
+\label{sec:r_functions}
+
+We'll learn a bunch of \define{functions} in R.  \textbf{Tip:} Keep a
+single page in your notes like a glossary with the name of the
+function and what it does.  Add to this function glossary everytime
+you learn a new function.
+
+\begin{example}[Absolute Value Function]
+  The absolute value function is written like ``abs()''.  Place the
+  value you want to take the absolute value of into the parenthasis.
+  \begin{rcode}
+    abs(4) # absolute value of 4
+    abs(-3) # absolute value of -3
+    
+    x <- -3*5 + 2
+    abs(x)
+    abs(-3*5+2) # same as abs(x)
+
+    abs(y) # notice the error because we haven't told R what 'y' is
+  \end{rcode}    
+\end{example}
+
+\begin{example}[Rounding function]
+  A common function we'll want to use to rounding numbers.  There is
+  a function to do this for us.  Using this function is better than
+  doing it yourself.
+  \begin{rcode}
+    number <- 4.3134314512351
+    round(number) # round to nearest whole number
+    round(number, 2) # round to 2 decimal places
+    round(number, 4) # round to 4 decimal places
+  \end{rcode}    
+\end{example}
+
+It is incredibly common to forget exactly how a function works, or
+maybe you're getting an error that you can't quite crack. There are
+two ways of getting help.
+
+\begin{enumerate}
+\item Google.  If you can't recall how the \texttt{round()} function
+  works, google ``round function R''
+\item Help within R itself.  There is an R function called \texttt{help()} -- put whatever R command you're interested in in the parentheses.
+\item If you're running RStudio, go to the lower right window, click the
+  'help' tab, and search for your function.
+\end{enumerate}
+
+\subsection{Exercises}
+
+\begin{q}
+  What R code is used to compute the following expressions?
+  \begin{enumerate}
+  \item Subtract 10 from 2 
+  \item Multiply 3 by 5
+  \item Divide 9 by 2
+  \item From 5, subtract 3 times 2
+  \item Double the difference of 5 and 3
+  \item Four squared
+  \item Divide 8 by 2 squared
+  \end{enumerate}
+\end{q} 
+
+% ~~
+
+\begin{q}
+  Consider the following R code.
+
+\begin{rcode}
+mass_kg <- 2.62 
+mass_g <- mass_kg * 1000 
+mass_g 
+\end{rcode}
+
+\begin{enumerate}
+\item Explain in plain language what the following three line program
+  does, i.e. state what each line does and what the meaning of the
+  output of the program is
+\item  Run the program. (Hit enter after each line break.) What is its output?  
+\item  Modify this code so that it converts the inital mass to pounds (there are 2.2
+  pounds in a kilogram) and print the resulting mass.  Run this
+  program.
+\end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q} 
+  Run \texttt{help(abs)} in R. What happens?  Familiarize yourself
+  with the built-in functions \texttt{abs()}, \texttt{round()},
+  \texttt{sqrt()} by running this ``help function'' on \texttt{round}
+  and \texttt{sqrt}. Use these built-in functions to create R code to
+  accomplish the following:
+
+  \begin{enumerate}
+  \item The absolute value of -15.5.   
+  \item 4.483847 rounded to one decimal place. 
+  \item Assign the value of the square root of 2.6 to a variable. Then
+    round the variable you’ve created to 2 decimal places and assign
+    it to another variable. Print out the rounded value.
+  \end{enumerate} 
+\end{q}
+
+% ~~
+
+\begin{q}
+  The following code estimates the total net primary productivity
+  (NPP) per day for two sites. It does this by multiplying the grams
+  of carbon produced in a single square meter per day by the total
+  area of the site. It then prints the daily NPP for each site.
+
+\begin{rcode}
+site1_g_carbon_m2_day <- 5 
+site2_g_carbon_m2_day <- 2.3 
+site1_area_m2 <- 200 
+site2_area_m2 <- 450 
+site1_npp_day <- site1_g_carbon_m2_day * site1_area_m2 
+site2_npp_day <- site2_g_carbon_m2_day * site2_area_m2 
+site1_npp_day 
+site2_npp_day 
+\end{rcode}
+
+\begin{enumerate}
+\item Explain what each line does. You can refer to each line number, e.g. ``Line 1 does so and so''. 
+\item Run the program using an RScript (upper left window, highlight
+  everything, then click 'Run'). What is the output of the program?
+\item Continuing the above code, write a line of code for each of the
+  following items
+  \begin{enumerate}
+  \item The sum of the total daily NPP for the two sites combined.  
+  \item The difference between the daily NPP for the two sites. We
+    only want an absolute difference, so use abs() function to make
+    sure the number is positive.  
+  \item The total NPP over a year for the two sites combined (the sum
+    of the total daily NPP values multiplied by 365).
+  \end{enumerate}  
+\end{enumerate}
+
+\end{q} 
+
+% ==================================
+\section{Vectors in R}
+
+One of the most fundamental objects we work with in R is known as a vector.  Think of it like a list of values. Often it may come as a column from a spreadsheet.  R gives us ways to perform different mathematical tasks with these vectors.  In this topic, most of the vectors will not contain too many items, so we'll learn what R can do in situations when we could just as easily do it by hand or a basic calculator.  But the real benefit of R comes into play when working with much larger datasets.
+
+By the end of the section, you'll know 
+\begin{enumerate}
+\item How to create a vector and provide it a variable name
+\item Modify a vector by adding new items to it
+\item Perform algebra with vectors
+\item Various functions that tell us certain features of vectors, like how long it it, it's largest/smallest value, the sum of all the entries, the mean of the entries
+\item How to extract entries with certain properties, e.g. the 23 entree, or the entries larger than 5, etc.  
+\end{enumerate}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Motivation}
+
+In many statistical scenarios, we'll work with databases. Think of these like an Excel
+spreadsheet. We'll get to working with those in R soon enough, for 
+now, here's a simple one we're familiar with, a grade sheet
+\begin{center}
+  \begin{tabular}{cccc}
+    \textbf{Student} & \textbf{HW1} & \textbf{HW2} & \textbf{Exam1} \\
+    \hline\hline
+    Joe              & 35 & 45 & 84 \\
+    Jen              & 42 & 48 & 91 \\
+    Jes              & 37 & 42 & 85 \\
+    Jon              & 32 & 40 & 78 \\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  \end{tabular}
+\end{center}
+
+A common task is to want to separate out a column, say ``HW1'', and
+work with that because maybe you want to
+\begin{itemize}
+\item add 5 points to every score because a question wasn't fair
+\item divide by the total number of possible points to get a percentage score
+\item add columns together to get a total HW grade,
+\item etc
+\end{itemize}
+
+A column in a database like this is simply a vector.
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Defining Vectors}
+
+A vector is a list of either numbers or of words. There is an
+R-function to create a \define{vector},
+
+\begin{rcode}
+# generic column function
+c()
+
+# list with numbers 1,2,3,4
+c(1,2,3,4)
+
+# a list of names, note the quotes
+c(``jim'', ``james'', ``jimmie'') 
+\end{rcode}
+
+Notice those lies that start with a `\#`?  Those are what computer programmers call \define{comments}.  That hash character tells the computer to ignore anything written behind it. This gives the human reading the code a chance to make notes right inside the code in a way that does not cause the computer to make an error.
+
+We just filled a vector with names surrounded by quotations
+
+\begin{rcode}
+  c(``jim'', ``james'', ``jimmie'')
+\end{rcode}
+
+This ensures that the vector is filled with what are called
+\define{strings}, which is a computer science way of saying a sequence
+of letters or numbers. If you didn't include the quotations, the
+computer reads them as variables. If you never defined a variable
+named \texttt{jim}, or \texttt{james}, or \texttt{jimmie}, then you'd
+get an error.
+
+\begin{rcode}
+  c(jim, james, jimmie) # should produce an error
+\end{rcode}
+
+But if you define these variables, then your vector will be filled
+with those values.
+
+\begin{rcode}
+  c(``x'', ``y'', ``z'') # vector with the letters in each position
+  c(x,y,z) # error b/c we never defined variables x,y,z
+
+  # let's define x,y,z as variables x <- 5 y <- 12 z <- 13 c(x,y,z) #
+  no longer an error
+
+    c(``x'', ``y'', ``z'') # still a vector with strings
+  \end{rcode}
+    
+We can name columns to more easily refer to them
+
+\begin{rcode}
+  column_1 <- c(5,3,5,7,25,234)
+  column_2 <- c(``naomi'', ``wilshi'')
+  primes <- c(2,3,5,7,11)
+  evens <- c(2,4,6,8,10,12,14,16)
+\end{rcode}
+
+Then to view them, compile just the name
+
+\begin{rcode}
+  column_1 
+  column_2 
+  primes 
+  evens 
+\end{rcode}
+
+Suppose you're studying mice, you did an experiment with five mice and
+you weighed each. So you created two vectors
+
+\begin{rcode}
+  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  weight_g <- c(50,60,65,82,67)
+\end{rcode}
+
+If we continued the experiment and want to add another mouse and its
+weight to our vector, we can do so by putting our previous vector
+names into a new vector and name that.
+
+\begin{rcode}
+  names <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  weight_g <- c(weight_g,39)
+  
+  # print those
+  names
+  weight_g
+\end{rcode} 
+
+Note how these overrode the orginal columns \texttt{names} and \texttt{weight\_g}.  So if you are worried about making a mistake, it's a good practice to give the updated vectors a new name
+
+\begin{rcode}
+  # original vectors
+  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  weight_g <- c(50,60,65,82,67)
+  
+  # update them with new mouse info    
+  names_v2 <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  weight_g_v2 <- c(weight_g,39)
+  
+  # now we still have the original
+  names
+  weight_g
+\end{rcode} 
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\section{Vector Arithmetic}
+
+In this section, we are going to learn how to add, divide, multiply, and divide. The difference between this and typical algebra is that, typically, you do them to a pair of numbers.  Here, we're going to (1) do the algebra with a number and a vector, and also (2) with two vectors.
+  
+The the following. Give a variable name to any vector with only
+numbers (i.e. no strings) of any length.  Then to that vector add a
+number to it, subtract a number from it, multiply it by a number,
+divide it, raise it to some power.
+
+
+Now try this. Give two variable names to two vectors whose elements
+are all numbers (i.e. no strings). The vectors should be be the same
+length. Then add them together, subtract them, multiply them together,
+and raise one to the power of the other.
+
+Now repeat this, except make one vector have length 3 and the other of
+length 4. Repeat again except make one vector length 2 and the other
+length 4.  Note what happens.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Functions on Vectors}
+
+Just like you can plug numbers into R-functions, there are certain
+R-functions that we can plug vectors into.
+  
+Recall that vectors, for us, will typically be filled with data. Perhaps its a column from a database, e.g. a gradebook. Here are some common things we'd want to be able to do with it.
+  
+\begin{example}
+  \begin{rcode}
+    hw1_grades <-  c(51,21,35,15,35,15,23,65,15,35,13,54,2
+    6,35,12,45,12,35,58,54,43,49,47,45,42,41,43,46,48,54,42,48,47)
+    
+    length(hw1_grades) # returns how many items are in the list
+    max(hw1_grades) # returns the max grade
+    min(hw1_grades) # returns the min grade
+    sum(hw1_grades) # adds all the grades together
+    mean(x) # returns the mean grade
+  \end{rcode}
+\end{example}
+  
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\section{Subsetting Vectors}
+
+Another important construction we'd like to be able to perform on a
+vector is to look at certain parts of the vector. For example, maybe
+we want to see just the 14th entry, or we want all the entrees above
+10, or that are not 0.  This is called \emph{subsetting vectors}
+because we are trying to extract a subset of the entrees in our vector
+  
+Here are various ways to get at some important information contained
+within a vector.
+  
+\begin{rcode}
+  # create an arbitrary vector
+  x <- c(1,5,4,8,6,4,5,3,1,2,4,9,8,7,4,6,5,3,8,1,2,5,3,6,1,2,5,3)
+  
+  # to see just the 6th entry, replace 6 with any entry
+  x[6]
+  
+  # to see the 3rd, 6th, 10th entry. Note the column function used to return multiply entrees
+  x[c(3,6,10)]
+  
+  # to see all the entrees strictly greater than 5
+  x[x > 5]
+  
+  # to see all entrees less than or equal to 7
+  x[ x <= 7]
+  
+  # to see all entress that are not equal to 4
+  x[ x != 4 ]
+  
+  # combine multiple properties with & (and) and | (or)
+  x[ x>5 & x<=7] # returns 5<x<=7, we do need to use the & here
+  x[ x < 3 | x >=8] # returns x str. less than 3 or at least 8    
+\end{rcode}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Exercises}
+
+\begin{q}
+  Create a variable (any name you like) from the following vector
+  (copy and paste, but make sure it's all on one line):
+
+\begin{rcode}
+  c(35,16,64,35,43,25,95,12,62,43,27,81,32,
+  46,25,29,93,105,56,68,48,72,83,72,42,29,12,61,
+  54,82,53,19,8,68,1,0,29,14,82,86,94,62,52,18,68,75,84)
+\end{rcode}
+
+  Using R, what command will print out the values that are
+  \begin{enumerate}
+  \item greater than 30
+  \item not equal to 82
+  \item between 45 and 75.
+  \end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q}
+  The number of birds banded at a series of sampling sites has been
+  counted by your field crew and entered into the following
+  vector. Counts are entered in order and sites are numbered starting
+  at one. Cut and paste the vector into your assignment and then
+  answer the following questions by printing them to the screen (again
+  be certain everything is on the same line). Some
+  R functions that will come in handy include \texttt{length(), max(), min(),
+  sum()}, and \texttt{mean()}.
+
+\begin{rcode}
+number_of_birds <- c(28, 32, 1, 0, 10, 22, 30, 19, 145, 27,36, 25, 9, 38, 21, 12, 122, 87, 36, 3, 0, 5, 55, 62, 98, 32,900, 33, 14, 39, 56, 81, 29, 38, 1, 0, 143, 37, 98, 77, 92, 83, 34, 98, 40, 45, 51, 17, 22, 37, 48, 38, 91, 73, 54, 46, 102, 273, 600, 10, 11)
+\end{rcode}
+
+What R command will give the answer the questions?
+  \begin{enumerate}
+  \item How many sites are there?   
+  \item How many birds were counted at site 42?   
+  \item What is the total number of birds counted across all of the
+    sites?   
+  \item What is the smallest number of birds counted?   
+  \item What is the largest number of birds counted?    
+  \item What is the mean number of birds seen at a site?   
+  \end{enumerate} 
+\end{q} 
+
+% ~~
+
+\begin{q}
+  You have data on the length, width, and height of 10 individuals of
+  the yew Taxus baccata (a type of shrub) stored in the following vectors:
+
+\begin{rcode}
+length <- c(2.2, 2.1, 2.7, 3.0, 3.1, 2.5, 1.9, 1.1, 3.5, 2.9)
+width <- c(1.3, 2.2, 1.5, 4.5, 3.1, 1.7, 1.8, 0.5, 2.0, 2.7)
+height <- c(9.6, 7.6, 2.2, 1.5, 4.0, 3.0, 4.5, 2.3, 7.5, 3.2)
+\end{rcode}
+
+  What R command will provide the following?
+  \begin{enumerate}
+  \item The volume of each shrub (i.e., the length times the width
+    times the height). storing this in a variable will make some of
+    the next problems easier
+  \item The total volume of all of the shrubs.
+  \item A vector of the height of shrubs with lengths greater than
+    2.5.
+  \item A vector of the height of shrubs with heights greater than 5.
+  \item A vector of the heights of the first 5 shrubs.
+  \item A vector of the volumes of the first 3 shrubs.
+  \end{enumerate}  
+\end{q}
+
+
+%\section{spreadsheets}
+%\label{sec:s}
 
