@@ -91,10 +91,7 @@ when we read our code later, we understand what it is doing
 \subsection{Functions}
 \label{sec:r_functions}
 
-We'll learn a bunch of \define{functions} in R.  \textbf{Tip:} Keep a
-single page in your notes like a glossary with the name of the
-function and what it does.  Add to this function glossary everytime
-you learn a new function.
+We'll learn a bunch of \define{functions} in R.  
 
 \begin{example}[Absolute Value Function]
   The absolute value function is written like ``abs()''.  Place the
@@ -284,7 +281,7 @@ c()
 c(1,2,3,4)
 
 # a list of names, note the quotes
-c(``jim'', ``james'', ``jimmie'') 
+c("jim", "james", "jimmie") 
 \end{rcode}
 
 Notice those lies that start with a `\#`?  Those are what computer programmers call \define{comments}.  That hash character tells the computer to ignore anything written behind it. This gives the human reading the code a chance to make notes right inside the code in a way that does not cause the computer to make an error.
@@ -292,7 +289,7 @@ Notice those lies that start with a `\#`?  Those are what computer programmers c
 We just filled a vector with names surrounded by quotations
 
 \begin{rcode}
-  c(``jim'', ``james'', ``jimmie'')
+  c("jim", "james", "jimmie")
 \end{rcode}
 
 This ensures that the vector is filled with what are called
@@ -310,20 +307,23 @@ But if you define these variables, then your vector will be filled
 with those values.
 
 \begin{rcode}
-  c(``x'', ``y'', ``z'') # vector with the letters in each position
+  c("x", "y", "z") # vector with the letters in each position
   c(x,y,z) # error b/c we never defined variables x,y,z
 
-  # let's define x,y,z as variables x <- 5 y <- 12 z <- 13 c(x,y,z) #
-  no longer an error
+  # let's define x,y,z as variables 
+  x <- 5 
+  y <- 12 
+  z <- 13 
+  c(x,y,z) #no longer an error
 
-    c(``x'', ``y'', ``z'') # still a vector with strings
+    c("x", "y", "z") # still a vector with strings
   \end{rcode}
     
 We can name columns to more easily refer to them
 
 \begin{rcode}
   column_1 <- c(5,3,5,7,25,234)
-  column_2 <- c(``naomi'', ``wilshi'')
+  column_2 <- c("naomi", "wilshi")
   primes <- c(2,3,5,7,11)
   evens <- c(2,4,6,8,10,12,14,16)
 \end{rcode}
@@ -341,7 +341,7 @@ Suppose you're studying mice, you did an experiment with five mice and
 you weighed each. So you created two vectors
 
 \begin{rcode}
-  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  names <- c("mouse_01", "mouse_02", "mouse_03", "mouse_04", "mouse_05")
   weight_g <- c(50,60,65,82,67)
 \end{rcode}
 
@@ -350,7 +350,7 @@ weight to our vector, we can do so by putting our previous vector
 names into a new vector and name that.
 
 \begin{rcode}
-  names <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  names <- c(names, "mouse_06") # note variable in first spot, string in second
   weight_g <- c(weight_g,39)
   
   # print those
@@ -362,11 +362,11 @@ Note how these overrode the orginal columns \texttt{names} and \texttt{weight\_g
 
 \begin{rcode}
   # original vectors
-  names <- c(``mouse_01'', ``mouse_02'', ``mouse_03'', ``mouse_04'', ``mouse_05'')
+  names <- c("mouse_01", "mouse_02", "mouse_03", "mouse_04", "mouse_05")
   weight_g <- c(50,60,65,82,67)
   
   # update them with new mouse info    
-  names_v2 <- c(names, ``mouse_06'') # note variable in first spot, string in second
+  names_v2 <- c(names, "mouse_06") # note variable in first spot, string in second
   weight_g_v2 <- c(weight_g,39)
   
   # now we still have the original
@@ -411,7 +411,8 @@ Recall that vectors, for us, will typically be filled with data. Perhaps its a c
     max(hw1_grades) # returns the max grade
     min(hw1_grades) # returns the min grade
     sum(hw1_grades) # adds all the grades together
-    mean(x) # returns the mean grade
+    mean(hw1_grades) # returns the mean grade
+    summary(hw1_grades) # a convenient way to get a lot of information about how the grades are distributed
   \end{rcode}
 \end{example}
   
