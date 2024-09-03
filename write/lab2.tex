@@ -1,9 +1,9 @@
 % !TEX root = lab2_.tex
 \begin{enumerate}
 	\item Go to \href{https://www.overleaf.com/register}{\tt https://www.overleaf.com/register}
-	\item Register for a free account (probably best to use your university email.)  You'll have to create a password at this point - make a note of it.\footnote{Overleaf isn't exactly a ``high stakes'' setting, your password needn't be super complicated -- just don't re-use a password that protects a more critical account!}
+	\item Register for a free account (probably best to use your university email.)  You'll have to create a password at this point---make a note of it.\footnote{Overleaf isn't exactly a ``high stakes'' setting, your password needn't be super complicated---just don't re-use a password that protects a more critical account!}
 	\item It's probably best to skip their ``Try the premium version for free'' offer.
-    \item Click the ``Create First Project'' button -- choose a blank project and name it ``hello.''
+    \item Click the ``Create First Project'' button---choose a blank project and name it ``hello.''
     \item You'll see two main panels (there's also some junk above and to the left, but ignore all that for now.)  The left-hand panel contains the \LaTeX\ source code for your project and the right-hand panel gives a preview of the resulting document.
     \item The ``blank project'' isn't completely blank.  The source code panel will be pre-populated with:
 \medskip
@@ -45,7 +45,8 @@ Let's fix that!
 \item Make whatever changes you deem appropriate to the title, author and date commands. (BTW, ``date'' doesn't necessarily have to literally be the date.)  To see what the effect of your changes is, you'll need to press the ``Recompile'' button.
 
 \item Put some words, introducing yourself after the \verb+\section{Introduction}+ command, and recompile. (There is an old and slightly unfunny tradition that the first program you write when learning a new programming language is called ``hello world!''  Please make your introduction something other than that.)
-
+\newcounter{interitemtemp} 
+\setcounter{interitemtemp}{\value{enumi}}
 \end{enumerate}
 
 At this point the source code might look something like:
@@ -89,6 +90,7 @@ math class is first on your list, so that one has been put in for
 you. You'll have to supply the next two...
 
 \begin{enumerate}
+\setcounter{enumi}{\value{interitemtemp}}
 
 \item Copy and paste the following markup into your document 
 after your greeting, but before \verb+\end{document}+.
@@ -114,8 +116,8 @@ in the list should start.
 if by some strange chance math is not your all time favorite class).
 \item There are several list-making environments in \LaTeX.  Try some googling (Maybe ``list making latex environments'') 
 and you should discover the other list-making environments.
-\item Make versions of your list of favorite classes that are (1) bulleted rather than numbered, (2) name the class and also give a comment about \sout{why math is so awesome} why you like it.
-
+\item Make versions of your list of favorite classes that are (1) bulleted rather than numbered, (2) name the class, and also (3) give a comment about \sout{why math is so awesome} why you liked it.
+\setcounter{interitemtemp}{\value{enumi}}
 \end{enumerate}
 
 \subsection*{Adding an equation}
@@ -132,6 +134,7 @@ two dollar signs (\$). To add a display equation, enclose the math
 between double dollar signs (\$\$). Try it!
 
 \begin{enumerate}
+\setcounter{enumi}{\value{interitemtemp}}
 \item Copy and paste the following markup into your document.
 \bigskip
 
